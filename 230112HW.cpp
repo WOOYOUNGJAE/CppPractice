@@ -2,10 +2,10 @@
 
 using namespace std;
 
-// ±¹¾î ¼öÇĞ ¿µ¾î Á¡¼ö ÀÔ·Â ¹Ş°í, ÃÑÁ¡, Æò±Õ Ãâ·Â
+// êµ­ì–´ ìˆ˜í•™ ì˜ì–´ ì ìˆ˜ ì…ë ¥ ë°›ê³ , ì´ì , í‰ê·  ì¶œë ¥
 int main(void)
 {
-    // °úÁ¦ 1
+    // ê³¼ì œ 1
 
     int iKoreanScr = 0;
     int iMathScr = 0;
@@ -13,28 +13,28 @@ int main(void)
     int iTotalScr = 0;
     float fAvrge = 0.0f;
 
-    // Á¡¼ö ÀÔ·Â ¹Ş±â
+    // ì ìˆ˜ ì…ë ¥ ë°›ê¸°
     cin >> iKoreanScr >> iMathScr >> iEngSCr;
 
-    // ÃÑÁ¡, Æò±Õ °è»ê
+    // ì´ì , í‰ê·  ê³„ì‚°
     iTotalScr = iKoreanScr + iMathScr + iEngSCr;
     fAvrge = (float)iTotalScr / 3.0f;
 
 
 
-    // Á¡¼ö ÃÑÁ¡ Æò±Õ Ãâ·Â
-    cout << "±¹¾î Á¡¼ö: " << iKoreanScr << endl << "¼öÇĞ Á¡¼ö: " << iMathScr << endl;
-    cout << "¿µ¾î Á¡¼ö: " << iEngSCr << endl;
+    // ì ìˆ˜ ì´ì  í‰ê·  ì¶œë ¥
+    cout << "êµ­ì–´ ì ìˆ˜: " << iKoreanScr << endl << "ìˆ˜í•™ ì ìˆ˜: " << iMathScr << endl;
+    cout << "ì˜ì–´ ì ìˆ˜: " << iEngSCr << endl;
 
 
-    cout << "ÃÑÁ¡: " << iTotalScr << endl;
-    cout << "Æò±Õ: " << fAvrge << endl;
+    cout << "ì´ì : " << iTotalScr << endl;
+    cout << "í‰ê· : " << fAvrge << endl;
 
     cout << "=================================================\n";
-    //°úÁ¦ 2
+    //ê³¼ì œ 2
     
-    // Æò±Õ¿¡ ´ëÇØ ¼ºÀû ºÎ¿©   ~100A ~90B ~80C ~70D F
-    cout << "ÇĞÁ¡: ";
+    // í‰ê· ì— ëŒ€í•´ ì„±ì  ë¶€ì—¬   ~100A ~90B ~80C ~70D F
+    cout << "í•™ì : ";
 
     if (90 <= fAvrge && fAvrge <= 100) //A
     {
