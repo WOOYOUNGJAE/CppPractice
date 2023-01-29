@@ -36,7 +36,7 @@
     <ClCompile Include="..\..\230112HW.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\OneDrive - 한양대학교\Jusin\자료\JusinCppHW\JusinCppHW\230127HW.cpp">
+    <ClCompile Include="230127HW.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
