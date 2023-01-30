@@ -5,7 +5,11 @@
       <FullPath>C:\Users\azn2w\Git\CppPractice\CppPracticeSol\Debug\CppPracticeProj.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
-  <ContentFiles />
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>C:\Users\azn2w\Git\CppPractice\CppPracticeSol\CppPracticeProj\230130HW.cpp</FullPath>
+    </ContentFile>
+  </ContentFiles>
   <SatelliteDlls />
   <NonRecipeFileRefs />
 </Project>

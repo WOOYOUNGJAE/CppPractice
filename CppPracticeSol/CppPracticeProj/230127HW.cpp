@@ -68,9 +68,9 @@ void Inquiry(tag_StudentInfo* _pInfo, int _iInfoNums);
 int main()
 {
 	srand(unsigned(time(nullptr)));
-
-	//HW1();
-	//HW2();
+	cout << "HELL";
+	HW1();
+	HW2();
 	HW3();
 	return 0;
 }
@@ -121,7 +121,7 @@ void HW2()
 
 void UpdateString(char* _czOriginal, char _cNewChar, int* _pOriginalSize, int _iUpdateSize)
 {
-	realloc(_czOriginal, sizeof(char) * (*_pOriginalSize + _iUpdateSize));
+	//realloc(_czOriginal, sizeof(char) * (*_pOriginalSize + _iUpdateSize));
 
 	// 맨 앞 비우고 오른쪽으로 한 칸씩 이동
 	for (int i = 0; i < *_pOriginalSize; ++i)
