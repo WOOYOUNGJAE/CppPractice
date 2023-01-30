@@ -70,8 +70,8 @@ int main()
 	srand(unsigned(time(nullptr)));
 
 	//HW1();
-	//HW2();
-	HW3();
+	HW2();
+	//HW3();
 	return 0;
 }
 
@@ -110,7 +110,7 @@ void HW2()
 	*pNewWord = '\0';
 
 	int iNewWordSize = 1;
-	for (int i = 0; i < strlen(czOriginal); ++i) // 글자 수만큼 업데이트
+	for (int i = 0; i < strlen(czOriginal)/*11*/; ++i) // 글자 수만큼 업데이트
 	{
 		UpdateString(
 			pNewWord, GetCharacter(czOriginal, strlen(czOriginal) + 1, i), &iNewWordSize, 1);
@@ -121,8 +121,12 @@ void HW2()
 
 void UpdateString(char* _czOriginal, char _cNewChar, int* _pOriginalSize, int _iUpdateSize)
 {
-	realloc(_czOriginal, sizeof(char) * (*_pOriginalSize + _iUpdateSize));
+	//realloc(_czOriginal, sizeof(char) * (*_pOriginalSize + _iUpdateSize));
 
+	//char* pNewPtr = (char*)malloc(sizeof(char) * (*_pOriginalSize + _iUpdateSize));
+	//pNewPtr = _czOriginal;
+
+	//free(_czOriginal);
 	// 맨 앞 비우고 오른쪽으로 한 칸씩 이동
 	for (int i = 0; i < *_pOriginalSize; ++i)
 	{
