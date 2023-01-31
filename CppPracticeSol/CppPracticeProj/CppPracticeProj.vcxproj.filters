@@ -39,7 +39,7 @@
     <ClCompile Include="230127HW.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="230130HW.cpp">
+    <ClCompile Include="230130TextRPG1HW.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
