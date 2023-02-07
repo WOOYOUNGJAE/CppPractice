@@ -13,46 +13,58 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="소스 파일\2개월차">
+      <UniqueIdentifier>{3eeccd62-abb6-4290-8bbd-1c81f9448115}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\1개월차">
+      <UniqueIdentifier>{bd29ee95-8bfc-4c8d-aac0-b1bb8fbfa421}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\230116HW.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\230118HW.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\230119HW.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\230120HW.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\230125HW.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\230126HW.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\230112HW.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="230127HW.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="230130TextRPG1HW.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="230201TextRPG3.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="230131TextRPG2.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="tmp.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\230112HW.cpp">
+      <Filter>소스 파일\1개월차</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\230116HW.cpp">
+      <Filter>소스 파일\1개월차</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\230118HW.cpp">
+      <Filter>소스 파일\1개월차</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\230119HW.cpp">
+      <Filter>소스 파일\1개월차</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\230120HW.cpp">
+      <Filter>소스 파일\1개월차</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\230125HW.cpp">
+      <Filter>소스 파일\1개월차</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\230126HW.cpp">
+      <Filter>소스 파일\1개월차</Filter>
+    </ClCompile>
+    <ClCompile Include="230127HW.cpp">
+      <Filter>소스 파일\1개월차</Filter>
+    </ClCompile>
+    <ClCompile Include="230130TextRPG1HW.cpp">
+      <Filter>소스 파일\1개월차</Filter>
+    </ClCompile>
+    <ClCompile Include="230131TextRPG2.cpp">
+      <Filter>소스 파일\1개월차</Filter>
+    </ClCompile>
     <ClCompile Include="230201Dupulication.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\1개월차</Filter>
+    </ClCompile>
+    <ClCompile Include="230201TextRPG3.cpp">
+      <Filter>소스 파일\1개월차</Filter>
+    </ClCompile>
+    <ClCompile Include="230202TextRPG4.cpp">
+      <Filter>소스 파일\1개월차</Filter>
+    </ClCompile>
+    <ClCompile Include="230207성적표.cpp">
+      <Filter>소스 파일\2개월차</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
