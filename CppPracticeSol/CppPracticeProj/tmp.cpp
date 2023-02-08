@@ -1,43 +1,56 @@
 #include <iostream>
+#include <vector>
+#include <algorithm>
+
+#define COMPARE_YEAR 0
+#define COMPARE_MONTH 1
+#define COMPARE_DAY 2
+
 
 using namespace std;
 
-int main(void)
+struct tagInfo
 {
-	//// 한 문자 출력
-	//putchar('a');
-	//fputc('a', stdout);
+	char czName[15];
+	short sDay;
+	short sMonth;
+	short sYear;
+};
 
-	//// 한 문자 입력
-	//int ch;
-	//ch = getchar();
-	//ch = fgetc(stdin);
-
-	//// 문자열 출력
-	//puts("Hello"); //Hello\n 출력
-	//fputs("World", stdout); // World 출력
-
-	//// 문자열 입력
-	//char czInput[5] = "";
-	//gets_s(czInput, sizeof(czInput));	// 스페이스(공백)을 읽어들이고, 엔터는 제외. 사이즈 초과하면 에러
-	//fgets(czInput, sizeof(czInput), stdin); // 설정한 사이즈만큼 읽어오고, '\0'문자 고려
-	FILE* pLoadFile = nullptr;
-
-	errno_t	err = fopen_s(&pLoadFile, "../Data/Test.txt", "rt");
-
-	char		szTemp[32] = "";
-
-	if (0 == err)	// 파일 개방 성공
-	{
-		fgets(szTemp, sizeof(szTemp), pLoadFile);
-		fputs(szTemp, stdout);
-
-		cout << "불러오기 성공!" << endl;
-
-		fclose(pLoadFile);		// 파일 개방시 반드시 소멸시켜줘야 함
-	}
+bool SortCompare(tagInfo _tInfo0, tagInfo _tInfo1)
+{
+	if (_tInfo0.sYear != _tInfo1.sYear)
+		return _tInfo0.sYear < _tInfo1.sYear; // 오름차순, 나이 많은 순
+	else if (_tInfo0.sMonth != _tInfo1.sMonth)
+		return _tInfo0.sMonth < _tInfo1.sMonth; // 나이 많은 순
 	else
-		cout << "파일 개방 실패" << endl;
+		return _tInfo0.sDay < _tInfo1.sDay;
+}
+
+
+int main()
+{
+	int n; // 학생 수
+	cin >> n;
+	// 이름 생일 월 연도
+
+	vector<tagInfo> vecInfos = {};
+	vecInfos.reserve(n); // resize X
+
+	for (int i = 0; i < n; ++i)
+	{
+		cin >> vecInfos[i].sDay;
+		cin >> vecInfos[i].czName;
+		cin >> vecInfos[i].sMonth;
+		cin >> vecInfos[i].sYear;
+	}
+
+	sort(vecInfos.begin(), vecInfos.end() - 1, SortCompare);
+
+	for (register int i = 0; i < n; ++i)
+	{
+		cout << vecInfos[i].czName << endl;
+	}
 
 	return 0;
 }
