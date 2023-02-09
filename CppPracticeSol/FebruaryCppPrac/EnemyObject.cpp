@@ -4,6 +4,7 @@
 CEnemy::CEnemy()
 {
 	cout << "에너미 생성자" << endl;
+	pInfo = new ObjectInfo;
 }
 
 CEnemy::~CEnemy()

@@ -3,7 +3,7 @@
 //#include "ClassDefine.h"
 
 
-GameManager::GameManager()
+GameManager::GameManager(): pPlayer(nullptr)
 {
 	cout << "GameManager 기본 생성자" << endl;
 }
@@ -58,12 +58,24 @@ const char* GameManager::SelectJob()
 	}
 }
 
+void GameManager::Initialize()
+{
+	// 게임 들어갔을 때 : 플레이어 생성
+	pPlayer = new CPlayer;
+}
+
 void GameManager::MainGame()
 {
-	CPlayer cPlayer; // 객체 생성될 때 바로 SelectJob
+	//CPlayer cPlayer; // 객체 생성될 때 바로 SelectJob
 
 	while (true)
 	{
+		if (pPlayer == nullptr)
+		{
+			cout << "플레이어가 존재하지 않습니다." << endl;
+			return;
+		}
+
 		system("cls");
 
 		// 플레이어 정보 출력
@@ -76,7 +88,7 @@ void GameManager::MainGame()
 		switch (iBtn)
 		{
 		case 1: // 사냥터
-			//Field(_pPlayerInfo);
+			Field();
 			break;
 		case 2: // 종료
 
@@ -84,7 +96,11 @@ void GameManager::MainGame()
 			cin >> iIfSaveBtn;
 
 			if (iIfSaveBtn == 1)
+			{
 				//Save(_pPlayerInfo);
+			}
+
+			DELETE_MAC(pPlayer);
 
 			return;
 
@@ -98,13 +114,14 @@ void GameManager::MainGame()
 	
 }
 
-void GameManager::Feild(CPlayer* _pPlayer)
+void GameManager::Field()
 {
 	while (true)
 	{
 		system("cls");
-		_pPlayer->Get_pInfo();
-		PrintInfo(*(_pPlayer->Get_pInfo()));
+
+		//PrintInfo(*(_pPlayer->Get_pInfo()));
+		PrintInfo(*(pPlayer->Get_pInfo()));
 		cout << "1. 초급 2. 중급 3. 고급 4. 전 단계 :";
 		int iBtn = 0;
 		cin >> iBtn;
@@ -114,13 +131,13 @@ void GameManager::Feild(CPlayer* _pPlayer)
 		switch (iBtn)
 		{
 		case 1:
-			BattleField(_pPlayer, EASY);
+			BattleField(EASY);
 			break;
 		case 2:
-			BattleField(_pPlayer, NORMAL);
+			BattleField(NORMAL);
 			break;
 		case 3:
-			BattleField(_pPlayer, HARD);
+			BattleField(HARD);
 			break;
 		case 4:
 			return;
@@ -132,7 +149,7 @@ void GameManager::Feild(CPlayer* _pPlayer)
 	}
 }
 
-void GameManager::BattleField(CPlayer* _pPlayer, int _iDifficulty)
+void GameManager::BattleField(int _iDifficulty)
 {
 	// instantiate enemy
 	//ObjectInfo* pEnemy = new ObjectInfo; // 동적할당
@@ -143,7 +160,7 @@ void GameManager::BattleField(CPlayer* _pPlayer, int _iDifficulty)
 	{
 		system("cls");
 
-		PrintInfo(*(_pPlayer->Get_pInfo()));
+		PrintInfo(*(pPlayer->Get_pInfo()));
 		PrintInfo(*(pEnemy->Get_pInfo())); // enemy
 
 		cout << "1. 공격 2. 도망";
@@ -155,7 +172,7 @@ void GameManager::BattleField(CPlayer* _pPlayer, int _iDifficulty)
 		switch (iBtn)
 		{
 		case 1: //전투
-			_iBattleResult = BattePhase(_pPlayer, pEnemy);
+			_iBattleResult = BattePhase(pEnemy);
 			break;
 		case 2: // 도망
 			return;
@@ -183,14 +200,14 @@ void GameManager::BattleField(CPlayer* _pPlayer, int _iDifficulty)
 	}
 }
 
-int GameManager::BattePhase(CPlayer* _pPlayer, CEnemy* _pEnemy)
+int GameManager::BattePhase(CEnemy* _pEnemy)
 {
 	// 너무 기니까 레퍼런스로 받아둠
-	int& refPlayerHp = _pPlayer->Get_pInfo()->iHP;
+	int& refPlayerHp = pPlayer->Get_pInfo()->iHP;
 	int& refEnemyHp = _pEnemy->Get_pInfo()->iHP;
 
-	refPlayerHp -= _pPlayer->Get_pInfo()->iAttack;
-	refEnemyHp -= _pPlayer->Get_pInfo()->iAttack;
+	refPlayerHp -= _pEnemy->Get_pInfo()->iAttack;
+	refEnemyHp -= pPlayer->Get_pInfo()->iAttack;
 
 	/*_pPlayer->Get_pInfo()->iHP -= _pPlayer->Get_pInfo()->iAttack;
 	_pEnemy->Get_pInfo()->iHP -= _pPlayer->Get_pInfo()->iAttack;*/
@@ -207,8 +224,9 @@ int GameManager::BattePhase(CPlayer* _pPlayer, CEnemy* _pEnemy)
 	else if (refEnemyHp <= 0)
 	{
 		cout << "승리" << endl;
-		delete _pEnemy;
-		// 동적 생성한 클래스도 delete만 하면 댕글링 포인트가 되는가?
+		DELETE_MAC(_pEnemy);
+
+		// 동적 생성한 클래스도 delete만 하면 댕글링 포인트가 되는가? 네
 		system("pause");
 		return WIN;
 	}
@@ -236,6 +254,8 @@ CEnemy* GameManager::InstantiateEnemy(int _iDifficulty)
 	default:
 		return nullptr;
 	}
+
+	// 이 함수가 호출되기 전에 리턴 값을 받는 포인터는 애초에 널 포인터라 메모리 해제 필요 없음
 
 	return pTmpEnemy;
 

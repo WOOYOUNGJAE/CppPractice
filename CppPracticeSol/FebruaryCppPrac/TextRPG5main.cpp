@@ -15,7 +15,7 @@ int main()
 	GameManager gameManager;
 
 	gameManager.PrintFirstScene();
-
+	gameManager.Initialize();
 	gameManager.MainGame();
 
 	return 0;

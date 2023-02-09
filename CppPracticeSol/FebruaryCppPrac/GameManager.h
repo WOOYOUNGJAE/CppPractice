@@ -20,19 +20,25 @@ public:
 	~GameManager();
 
 private:
+	CPlayer* pPlayer;
+	//CEnemy* pEnemy;
+
+private:
 
 public:
 	/*class CPlayer;
 	class CEnemy;*/
 
 	void MainGame();
-	void Feild(CPlayer* _pPlayer);
-	void BattleField(CPlayer* _pPlayer, int _iDifficulty);
-	int BattePhase(CPlayer* _pPlayer, CEnemy* _pEnemy);
+	void Field();
+	void BattleField(int _iDifficulty);
+	int BattePhase(CEnemy* _pEnemy);
 
+	void Initialize();
 	CEnemy* InstantiateEnemy(int _iDifficulty);
 
 	void PrintFirstScene();
 	void PrintInfo(ObjectInfo _tInfo);
+
 	static const char* SelectJob();
 };
