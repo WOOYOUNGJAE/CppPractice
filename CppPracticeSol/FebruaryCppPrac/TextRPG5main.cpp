@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "ClassDefine.h"
+#include "GameManager.h"
 
 #ifndef DBG_NEW 
 

@@ -1,5 +1,6 @@
 #include "stdafx.h"
-#include "ClassDefine.h"
+#include "GameManager.h"
+//#include "ClassDefine.h"
 
 
 GameManager::GameManager()
@@ -60,8 +61,7 @@ const char* GameManager::SelectJob()
 void GameManager::MainGame()
 {
 	CPlayer cPlayer; // 객체 생성될 때 바로 SelectJob
-	CCreatureObject* pp = new CPlayer;
-	cPlayer.Get_pInfo();
+
 	while (true)
 	{
 		system("cls");

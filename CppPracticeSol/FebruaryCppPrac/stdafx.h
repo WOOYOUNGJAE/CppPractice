@@ -15,6 +15,7 @@
 // TODO: 프로그램에 필요한 추가 헤더는 여기에서 참조합니다.
 #include <iostream>
 #include <string>
+#include <string.h>
 
 #define DELETE_MAC(p)	if(p) {delete p; p = nullptr;}
 #define DELETE_ARR_MAC(p)	if(p) {delete[] p; p = nullptr;}

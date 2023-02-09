@@ -1,8 +1,9 @@
 #pragma once
 
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "StructureDefine.h"
 #include "ClassDefine.h"
+
 
 const int EASY = 1;
 const int NORMAL = 2;
@@ -21,6 +22,9 @@ public:
 private:
 
 public:
+	/*class CPlayer;
+	class CEnemy;*/
+
 	void MainGame();
 	void Feild(CPlayer* _pPlayer);
 	void BattleField(CPlayer* _pPlayer, int _iDifficulty);
