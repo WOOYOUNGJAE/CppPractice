@@ -10,6 +10,7 @@ CEnemy::CEnemy()
 CEnemy::~CEnemy()
 {
 	cout << "에너미 소멸자" << endl;
+	DELETE_MAC(pInfo);
 }
 
 ObjectInfo* CEnemy::Get_pInfo()

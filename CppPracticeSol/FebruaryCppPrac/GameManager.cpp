@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "GameManager.h"
-//#include "ClassDefine.h"
+#include "ClassDefine.h"
 
 
 GameManager::GameManager(): pPlayer(nullptr)
@@ -175,6 +175,7 @@ void GameManager::BattleField(int _iDifficulty)
 			_iBattleResult = BattePhase(pEnemy);
 			break;
 		case 2: // µµ¸Á
+			DELETE_MAC(pEnemy);
 			return;
 
 		default:

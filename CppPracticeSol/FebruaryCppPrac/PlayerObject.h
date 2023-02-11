@@ -18,6 +18,6 @@ public:
 	void Set_pInfo_Attack(int _iAttack);
 
 	//other functions
-	void Initialize(const char _szName[], int _iHP, int _iAttack);
+	void Initialize(int _iHP, int _iAttack);
 
 };
