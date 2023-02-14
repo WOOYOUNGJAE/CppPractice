@@ -22,8 +22,8 @@ public:
 
 private:
 	CPlayer* pPlayer;
-	//CEnemy* pEnemy;
-
+	CEnemy* pEnemy;
+	vector<CEnemy*> m_vecEnemyPtrs;
 private:
 
 public:
@@ -33,7 +33,7 @@ public:
 	void MainGame();
 	void Field();
 	void BattleField(int _iDifficulty);
-	int BattePhase(CEnemy* _pEnemy);
+	int BattePhase();
 
 	void Initialize();
 	CEnemy* InstantiateEnemy(int _iDifficulty);

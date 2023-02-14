@@ -3,7 +3,7 @@
 #include "ClassDefine.h"
 
 
-GameManager::GameManager(): pPlayer(nullptr)
+GameManager::GameManager(): pPlayer(nullptr), pEnemy(nullptr)
 {
 	cout << "GameManager 기본 생성자" << endl;
 }
@@ -62,6 +62,7 @@ void GameManager::Initialize()
 {
 	// 게임 들어갔을 때 : 플레이어 생성
 	pPlayer = new CPlayer;
+	m_vecEnemyPtrs.reserve(HARD); // 최대 레벨 만큼 리저브
 }
 
 void GameManager::MainGame()
@@ -126,8 +127,6 @@ void GameManager::Field()
 		int iBtn = 0;
 		cin >> iBtn;
 
-
-
 		switch (iBtn)
 		{
 		case 1:
@@ -152,16 +151,25 @@ void GameManager::Field()
 void GameManager::BattleField(int _iDifficulty)
 {
 	// instantiate enemy
-	//ObjectInfo* pEnemy = new ObjectInfo; // 동적할당
-	CEnemy* pEnemy = nullptr;
-	pEnemy = InstantiateEnemy(_iDifficulty);
+	for (int i = 0; i < _iDifficulty; ++i) // 난이도 만큼 적 생성
+	{
+		CEnemy* pEnemy = nullptr;
+		pEnemy = InstantiateEnemy(_iDifficulty);
+		m_vecEnemyPtrs.push_back(pEnemy);
+	}
 
+	int iEnemyIndx = 0;
 	while (true)
 	{
 		system("cls");
 
 		PrintInfo(*(pPlayer->Get_pInfo()));
-		PrintInfo(*(pEnemy->Get_pInfo())); // enemy
+		for (int i = 0; i < m_vecEnemyPtrs.size(); ++i) // 난이도 만큼 적 생성
+		{
+			if (m_vecEnemyPtrs[i] != nullptr)
+			//if (m_vecEnemyPtrs[i]->Get_pInfo()->iHP >= 0)
+				PrintInfo(*(m_vecEnemyPtrs[i]->Get_pInfo())); // enemy
+		}
 
 		cout << "1. 공격 2. 도망";
 		int iBtn = 0;
@@ -169,20 +177,21 @@ void GameManager::BattleField(int _iDifficulty)
 
 		int _iBattleResult = -2;
 
+
 		switch (iBtn)
 		{
 		case 1: //전투
-			_iBattleResult = BattePhase(pEnemy);
-			break;
+		{
+			_iBattleResult = BattePhase();
+		}
+		break;
 		case 2: // 도망
-			DELETE_MAC(pEnemy);
+
 			return;
 
 		default:
 			break;
 		}
-		// 전투가 끝난 후
-
 
 		switch (_iBattleResult)
 		{
@@ -199,15 +208,24 @@ void GameManager::BattleField(int _iDifficulty)
 		}
 
 	}
+	// 전투가 끝난 후
+	// 벡터 정리
+	m_vecEnemyPtrs.clear();
+	for (vector<CEnemy*>::iterator iter = m_vecEnemyPtrs.begin();
+		iter != m_vecEnemyPtrs.end(); ++iter)
+	{
+		DELETE_MAC(*iter);
+	}
 }
 
-int GameManager::BattePhase(CEnemy* _pEnemy)
+int GameManager::BattePhase()
 {
 	// 너무 기니까 레퍼런스로 받아둠
+	CEnemy* pEnemy = m_vecEnemyPtrs.front();
 	int& refPlayerHp = pPlayer->Get_pInfo()->iHP;
-	int& refEnemyHp = _pEnemy->Get_pInfo()->iHP;
+	int& refEnemyHp = pEnemy->Get_pInfo()->iHP;
 
-	refPlayerHp -= _pEnemy->Get_pInfo()->iAttack;
+	refPlayerHp -= pEnemy->Get_pInfo()->iAttack;
 	refEnemyHp -= pPlayer->Get_pInfo()->iAttack;
 
 	/*_pPlayer->Get_pInfo()->iHP -= _pPlayer->Get_pInfo()->iAttack;
@@ -219,17 +237,25 @@ int GameManager::BattePhase(CEnemy* _pEnemy)
 	{
 		cout << "사망하였습니다." << endl;
 		refPlayerHp = 100;
+
 		system("pause");
 		return LOSE;
 	}
 	else if (refEnemyHp <= 0)
 	{
-		cout << "승리" << endl;
-		DELETE_MAC(_pEnemy);
+		cout << "적 처치" << endl;
+		DELETE_MAC(pEnemy);
+		m_vecEnemyPtrs.front() = nullptr;
+		m_vecEnemyPtrs.erase(m_vecEnemyPtrs.begin());
 
-		// 동적 생성한 클래스도 delete만 하면 댕글링 포인트가 되는가? 네
-		system("pause");
-		return WIN;
+		//m_vecEnemyPtrs.pop_back();
+		if (m_vecEnemyPtrs.empty() == true)
+		{
+			cout << "모든 적을 처치하였습니다." << endl;
+			system("pause");
+			return WIN;
+			
+		}
 	}
 
 	return DRAW;
@@ -238,24 +264,26 @@ int GameManager::BattePhase(CEnemy* _pEnemy)
 CEnemy* GameManager::InstantiateEnemy(int _iDifficulty)
 {
 	CEnemy* pTmpEnemy = new CEnemy;
+	pTmpEnemy->Initialize();
 	pTmpEnemy->Set_pInfo_HP(30 * _iDifficulty);
 	pTmpEnemy->Set_pInfo_Attack(3 * _iDifficulty);
-
+	char szTmpNumber[20] = "";
+	sprintf_s(szTmpNumber, "%d", ext_iEnemyNumbering); // int to char Arr
 	switch (_iDifficulty)
 	{
 	case EASY:
-		pTmpEnemy->Set_pInfo_Name("초급");
+		pTmpEnemy->Set_pInfo_Name("초급 #");
 		break;
 	case NORMAL:
-		pTmpEnemy->Set_pInfo_Name("중급");
+		pTmpEnemy->Set_pInfo_Name("중급 #");
 		break;
 	case HARD:
-		pTmpEnemy->Set_pInfo_Name("고급");
+		pTmpEnemy->Set_pInfo_Name("고급 #");
 		break;
 	default:
 		return nullptr;
 	}
-
+	strcat_s(pTmpEnemy->Get_pInfo()->szName, szTmpNumber);
 	// 이 함수가 호출되기 전에 리턴 값을 받는 포인터는 애초에 널 포인터라 메모리 해제 필요 없음
 
 	return pTmpEnemy;

@@ -10,7 +10,7 @@ private:
 	ObjectInfo* pInfo;
 public:
 	//getter
-	ObjectInfo* Get_pInfo();
+	ObjectInfo* Get_pInfo() const;
 
 	//setter
 	void Set_pInfo_Name(const char _szName[]);

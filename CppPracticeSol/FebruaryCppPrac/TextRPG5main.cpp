@@ -8,6 +8,7 @@
 #define new DBG_NEW 
 
 #endif
+int ext_iEnemyNumbering = 0;
 int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
@@ -18,5 +19,6 @@ int main()
 	gameManager.Initialize();
 	gameManager.MainGame();
 
+	/*int TEnemyOnlyInfo::iNumbering = 1;*/
 	return 0;
 }

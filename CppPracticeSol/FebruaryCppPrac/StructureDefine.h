@@ -1,5 +1,4 @@
 #pragma once
-
 struct ObjectInfo
 {
 	char szName[20];

@@ -41,7 +41,7 @@ CPlayer::~CPlayer()
 	cout << "플레이어 소멸자" << endl;
 }
 
-ObjectInfo* CPlayer::Get_pInfo()
+ObjectInfo* CPlayer::Get_pInfo() const
 {
 	return pInfo;
 }
