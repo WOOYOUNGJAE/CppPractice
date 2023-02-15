@@ -4,14 +4,21 @@
 CEnemy::CEnemy(): pInfo(nullptr), pEnemyOnlyInfo(nullptr)
 {
 	cout << "에너미 생성자" << endl;
-	
+}
+
+CEnemy::CEnemy(const CEnemy& _rhs) : pInfo(nullptr), pEnemyOnlyInfo(nullptr)
+{
+	pInfo = new ObjectInfo;
+	pEnemyOnlyInfo = new TEnemyOnlyInfo;
+
+	pInfo = _rhs.pInfo;
+	pEnemyOnlyInfo = _rhs.pEnemyOnlyInfo;
 }
 
 CEnemy::~CEnemy()
 {
 	cout << "에너미 소멸자" << endl;
-	DELETE_MAC(pInfo);
-	DELETE_MAC(pEnemyOnlyInfo);
+	Release();
 }
 
 ObjectInfo* CEnemy::Get_pInfo()
@@ -46,4 +53,10 @@ void CEnemy::Initialize()
 	memset(pInfo->szName, 0, sizeof(pInfo->szName));
 	pInfo->iHP = 0;
 	pInfo->iAttack = 0;
+}
+
+void CEnemy::Release()
+{
+	DELETE_MAC(pInfo);
+	DELETE_MAC(pEnemyOnlyInfo);
 }

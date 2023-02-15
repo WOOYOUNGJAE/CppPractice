@@ -27,9 +27,6 @@ private:
 private:
 
 public:
-	/*class CPlayer;
-	class CEnemy;*/
-
 	void MainGame();
 	void Field();
 	void BattleField(int _iDifficulty);

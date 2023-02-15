@@ -188,7 +188,6 @@ void GameManager::BattleField(int _iDifficulty)
 		case 2: // 도망
 
 			return;
-
 		default:
 			break;
 		}
@@ -220,8 +219,8 @@ void GameManager::BattleField(int _iDifficulty)
 
 int GameManager::BattePhase()
 {
-	// 너무 기니까 레퍼런스로 받아둠
 	CEnemy* pEnemy = m_vecEnemyPtrs.front();
+	// 너무 기니까 레퍼런스로 받아둠
 	int& refPlayerHp = pPlayer->Get_pInfo()->iHP;
 	int& refEnemyHp = pEnemy->Get_pInfo()->iHP;
 

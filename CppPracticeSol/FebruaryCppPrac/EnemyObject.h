@@ -23,6 +23,7 @@ class CEnemy
 {
 public:
 	CEnemy();
+	CEnemy(const CEnemy& _rhs); // 복사 생성자
 	~CEnemy();
 private:
 	ObjectInfo* pInfo;
@@ -38,4 +39,5 @@ public:
 
 	//other functions
 	void Initialize();
+	void Release();
 };
