@@ -24,9 +24,6 @@
     <ClInclude Include="GameManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="CreatureObject.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerObject.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -39,6 +36,9 @@
     <ClInclude Include="ClassDefine.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="CObjectBase.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameManager.cpp">
@@ -47,13 +47,13 @@
     <ClCompile Include="TextRPG5main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="CreatureObject.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerObject.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="EnemyObject.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CObjectBase.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

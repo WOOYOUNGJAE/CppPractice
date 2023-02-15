@@ -1,25 +1,9 @@
 #pragma once
-//#include "CreatureObject.h"
+#include "CObjectBase.h"
 #include "StructureDefine.h"
 
-extern int ext_iEnemyNumbering;
-
-struct TEnemyOnlyInfo
-{
-	int iNumbering;
-	TEnemyOnlyInfo()
-	{
-		iNumbering = ++ext_iEnemyNumbering;
-	}
-};
-
-class Temp
-{
-public:
-	static int iStaticTemp;
-};
  
-class CEnemy 
+class CEnemy : public CObjectBase
 {
 public:
 	CEnemy();

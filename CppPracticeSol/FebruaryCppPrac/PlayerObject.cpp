@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "PlayerObject.h"
+
 #include "GameManager.h"
 
 
@@ -30,15 +31,12 @@ CPlayer::CPlayer()
 		break;
 	}*/
 #pragma endregion
-
-	
 }
 
 CPlayer::~CPlayer()
-{
-	DELETE_MAC(pInfo);
-	
+{	
 	cout << "플레이어 소멸자" << endl;
+	CObjectBase::Release();
 }
 
 ObjectInfo* CPlayer::Get_pInfo() const

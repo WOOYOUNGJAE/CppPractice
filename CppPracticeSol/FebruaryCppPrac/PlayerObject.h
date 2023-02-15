@@ -1,7 +1,8 @@
 #pragma once
 #include "StructureDefine.h"
+#include "CObjectBase.h"
 
-class CPlayer
+class CPlayer : CObjectBase
 {
 public:
 	CPlayer();

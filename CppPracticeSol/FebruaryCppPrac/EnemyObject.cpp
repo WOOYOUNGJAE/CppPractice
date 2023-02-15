@@ -47,16 +47,14 @@ void CEnemy::Set_pInfo_Attack(int _iAttack)
 }
 
 void CEnemy::Initialize()
-{
-	pInfo = new ObjectInfo;
+{	
+	CObjectBase::Initialize();
+
 	pEnemyOnlyInfo = new TEnemyOnlyInfo;
-	memset(pInfo->szName, 0, sizeof(pInfo->szName));
-	pInfo->iHP = 0;
-	pInfo->iAttack = 0;
 }
 
 void CEnemy::Release()
 {
-	DELETE_MAC(pInfo);
+	CObjectBase::Release();
 	DELETE_MAC(pEnemyOnlyInfo);
 }

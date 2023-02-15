@@ -141,7 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ClassDefine.h" />
-    <ClInclude Include="CreatureObject.h" />
+    <ClInclude Include="CObjectBase.h" />
     <ClInclude Include="EnemyObject.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="StructureDefine.h" />
@@ -150,7 +150,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CreatureObject.cpp" />
+    <ClCompile Include="CObjectBase.cpp" />
     <ClCompile Include="EnemyObject.cpp" />
     <ClCompile Include="PlayerObject.cpp" />
     <ClCompile Include="TextRPG5main.cpp" />
