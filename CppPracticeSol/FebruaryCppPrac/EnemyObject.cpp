@@ -21,14 +21,29 @@ CEnemy::~CEnemy()
 	Release();
 }
 
-ObjectInfo* CEnemy::Get_pInfo()
-{
-	return pInfo;
-}
-
 TEnemyOnlyInfo* CEnemy::Get_pEnemyOnly()
 {
 	return pEnemyOnlyInfo;
+}
+
+void CEnemy::Initialize()
+{	
+	CObjectBase::Initialize();
+
+	pEnemyOnlyInfo = new TEnemyOnlyInfo;
+}
+
+void CEnemy::Release()
+{
+	CObjectBase::Release();
+	DELETE_MAC(pEnemyOnlyInfo);
+}
+
+/*
+
+ObjectInfo* CEnemy::Get_pInfo()
+{
+	return pInfo;
 }
 
 void CEnemy::Set_pInfo_Name(const char _szName[])
@@ -44,17 +59,4 @@ void CEnemy::Set_pInfo_HP(int _iHP)
 void CEnemy::Set_pInfo_Attack(int _iAttack)
 {
 	pInfo->iAttack = _iAttack;
-}
-
-void CEnemy::Initialize()
-{	
-	CObjectBase::Initialize();
-
-	pEnemyOnlyInfo = new TEnemyOnlyInfo;
-}
-
-void CEnemy::Release()
-{
-	CObjectBase::Release();
-	DELETE_MAC(pEnemyOnlyInfo);
-}
+}*/

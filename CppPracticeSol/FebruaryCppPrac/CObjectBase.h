@@ -17,9 +17,10 @@ public:
 
 protected:
 	ObjectInfo* pInfo;
+	int tmp = 11;
 public:	
 	//getter
-	ObjectInfo* Get_pInfo();
+	ObjectInfo* Get_pInfo();// const;
 
 	//setter
 	void Set_pInfo_Name(const char _szName[]);
@@ -27,7 +28,7 @@ public:
 	void Set_pInfo_Attack(int _iAttack);
 
 	//other functions
-	void Initialize();
-	void Initialize(char _szName[], int _iHP, int _iAttack);
-	void Release();
+	virtual void Initialize();
+	virtual void Initialize(char _szName[], int _iHP, int _iAttack);
+	virtual void Release();
 };

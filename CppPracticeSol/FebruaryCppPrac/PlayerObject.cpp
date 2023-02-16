@@ -7,8 +7,6 @@
 CPlayer::CPlayer()
 {
 	cout << "플레이어 생성자" << endl;
-	pInfo = new ObjectInfo{};
-	Initialize(100, 10);
 #pragma region 임시
 	/*int _iButton = 0;
 	cout << "직업을 입력하세요. (1. 전사 2. 마법사 3. 도적) : ";
@@ -36,32 +34,13 @@ CPlayer::CPlayer()
 CPlayer::~CPlayer()
 {	
 	cout << "플레이어 소멸자" << endl;
-	CObjectBase::Release();
+	Release();
 }
 
-ObjectInfo* CPlayer::Get_pInfo() const
+void CPlayer::Initialize() //override
 {
-	return pInfo;
-}
-
-void CPlayer::Set_pInfo_Name(const char _szName[])
-{
-	strcpy_s(pInfo->szName, sizeof(pInfo->szName), _szName);
-}
-
-void CPlayer::Set_pInfo_HP(int _iHP)
-{
-	pInfo->iHP = _iHP;
-}
-
-void CPlayer::Set_pInfo_Attack(int _iAttack)
-{
-	pInfo->iAttack = _iAttack;
-}
-
-void CPlayer::Initialize(int _iHP, int _iAttack)
-{
+	pInfo = new ObjectInfo{};
 	strcpy_s(pInfo->szName, GameManager::SelectJob());
-	pInfo->iHP = _iHP;
-	pInfo->iAttack = _iAttack;
+	pInfo->iHP = 100;
+	pInfo->iAttack = 10;
 }

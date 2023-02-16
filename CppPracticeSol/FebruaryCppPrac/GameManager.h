@@ -34,6 +34,7 @@ public:
 
 	void Initialize();
 	CEnemy* InstantiateEnemy(int _iDifficulty);
+	void ClearEnemyVector();
 
 	void PrintFirstScene();
 	void PrintInfo(ObjectInfo _tInfo);

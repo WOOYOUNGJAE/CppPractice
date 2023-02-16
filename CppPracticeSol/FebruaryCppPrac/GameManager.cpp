@@ -62,6 +62,7 @@ void GameManager::Initialize()
 {
 	// 게임 들어갔을 때 : 플레이어 생성
 	pPlayer = new CPlayer;
+	pPlayer->Initialize();
 	m_vecEnemyPtrs.reserve(HARD); // 최대 레벨 만큼 리저브
 }
 
@@ -186,7 +187,8 @@ void GameManager::BattleField(int _iDifficulty)
 		}
 		break;
 		case 2: // 도망
-
+			// 벡터 정리
+			ClearEnemyVector();
 			return;
 		default:
 			break;
@@ -209,12 +211,7 @@ void GameManager::BattleField(int _iDifficulty)
 	}
 	// 전투가 끝난 후
 	// 벡터 정리
-	m_vecEnemyPtrs.clear();
-	for (vector<CEnemy*>::iterator iter = m_vecEnemyPtrs.begin();
-		iter != m_vecEnemyPtrs.end(); ++iter)
-	{
-		DELETE_MAC(*iter);
-	}
+	ClearEnemyVector();
 }
 
 int GameManager::BattePhase()
@@ -287,4 +284,14 @@ CEnemy* GameManager::InstantiateEnemy(int _iDifficulty)
 
 	return pTmpEnemy;
 
+}
+
+void GameManager::ClearEnemyVector()
+{
+	m_vecEnemyPtrs.clear();
+	for (vector<CEnemy*>::iterator iter = m_vecEnemyPtrs.begin();
+		iter != m_vecEnemyPtrs.end(); ++iter)
+	{
+		DELETE_MAC(*iter);
+	}
 }

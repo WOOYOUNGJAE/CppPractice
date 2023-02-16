@@ -2,23 +2,23 @@
 #include "StructureDefine.h"
 #include "CObjectBase.h"
 
-class CPlayer : CObjectBase
+class CPlayer : public CObjectBase
 {
 public:
 	CPlayer();
 	~CPlayer();
 private:
-	ObjectInfo* pInfo;
+	int tmp = 23;
 public:
 	//getter
-	ObjectInfo* Get_pInfo() const;
+	//ObjectInfo* Get_pInfo() const;
 
-	//setter
-	void Set_pInfo_Name(const char _szName[]);
-	void Set_pInfo_HP(int _iHP);
-	void Set_pInfo_Attack(int _iAttack);
+	////setter
+	//void Set_pInfo_Name(const char _szName[]);
+	//void Set_pInfo_HP(int _iHP);
+	//void Set_pInfo_Attack(int _iAttack);
 
 	//other functions
-	void Initialize(int _iHP, int _iAttack);
-
+	//virtual void Initialize(int _iHP, int _iAttack);
+	virtual void Initialize() override;
 };

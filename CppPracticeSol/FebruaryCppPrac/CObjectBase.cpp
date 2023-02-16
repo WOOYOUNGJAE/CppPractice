@@ -11,14 +11,14 @@ CObjectBase::~CObjectBase()
 	//DELETE_MAC(this); // 메모리 해제
 }
 
-ObjectInfo* CObjectBase::Get_pInfo()
+ObjectInfo* CObjectBase::Get_pInfo()// const
 {
 	return pInfo;
 }
 
 void CObjectBase::Set_pInfo_Name(const char _szName[])
 {
-	strcpy_s(pInfo->szName, _szName);
+	strcpy_s(pInfo->szName, sizeof(pInfo->szName), _szName);
 }
 
 void CObjectBase::Set_pInfo_HP(int _iHP)

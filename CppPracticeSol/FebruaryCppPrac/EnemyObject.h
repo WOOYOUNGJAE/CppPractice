@@ -14,14 +14,14 @@ private:
 	TEnemyOnlyInfo* pEnemyOnlyInfo;
 public:
 	//getter
-	ObjectInfo* Get_pInfo();
 	TEnemyOnlyInfo* Get_pEnemyOnly();
+	//ObjectInfo* Get_pInfo();
 	//setter
-	void Set_pInfo_Name(const char _szName[]);
+	/*void Set_pInfo_Name(const char _szName[]);
 	void Set_pInfo_HP(int _iHP);
-	void Set_pInfo_Attack(int _iAttack);
+	void Set_pInfo_Attack(int _iAttack);*/
 
 	//other functions
-	void Initialize();
-	void Release();
+	virtual void Initialize() override;
+	virtual void Release() override;
 };
