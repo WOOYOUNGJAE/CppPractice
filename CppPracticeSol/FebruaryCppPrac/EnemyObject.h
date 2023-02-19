@@ -10,16 +10,11 @@ public:
 	CEnemy(const CEnemy& _rhs); // 복사 생성자
 	~CEnemy();
 private:
-	ObjectInfo* pInfo;
-	TEnemyOnlyInfo* pEnemyOnlyInfo;
+	tEnemyOnlyInfo* pEnemyOnlyInfo;
 public:
 	//getter
-	TEnemyOnlyInfo* Get_pEnemyOnly();
-	//ObjectInfo* Get_pInfo();
+	tEnemyOnlyInfo* Get_pEnemyOnly();
 	//setter
-	/*void Set_pInfo_Name(const char _szName[]);
-	void Set_pInfo_HP(int _iHP);
-	void Set_pInfo_Attack(int _iAttack);*/
 
 	//other functions
 	virtual void Initialize() override;

@@ -2,22 +2,15 @@
 // 플레이어 에너미 공통
 // 차이점은? 아직 없음
 #include "StructureDefine.h"
-//struct ObjectInfo
-//{
-//	char szName[20];
-//	int iHP;
-//	int iAttack;
-//};
 
 class CObjectBase
 {
 public:
 	CObjectBase();
-	~CObjectBase();
+	virtual ~CObjectBase();
 
 protected:
 	ObjectInfo* pInfo;
-	int tmp = 11;
 public:	
 	//getter
 	ObjectInfo* Get_pInfo();// const;

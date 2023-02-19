@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "CObjectBase.h"
 
-CObjectBase::CObjectBase()
+CObjectBase::CObjectBase() : pInfo(nullptr)
 {
 	//pInfo = new ObjectInfo; 생성자에서 동적할당 안하도록 바꿔야
 }

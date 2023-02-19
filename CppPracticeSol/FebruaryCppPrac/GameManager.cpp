@@ -82,7 +82,7 @@ void GameManager::MainGame()
 
 		// 플레이어 정보 출력
 
-		cout << "버튼을 누르세요 (1.사냥터 2.종료): ";
+		cout << "버튼을 누르세요 (1.사냥터 2.상점 3.인벤토리 4.종료): ";
 		int iBtn = 0;
 		cin >> iBtn;
 		int iIfSaveBtn = 0;
@@ -92,7 +92,14 @@ void GameManager::MainGame()
 		case 1: // 사냥터
 			Field();
 			break;
-		case 2: // 종료
+		case 2:
+			Shop();
+			break;
+		case 3:
+			Inventory();
+			system("pause");
+			break;
+		case 4: // 종료
 
 			cout << "플레이 정보를 저장 하시겠습니까? (1.예 2.아니요) : ";
 			cin >> iIfSaveBtn;
@@ -101,7 +108,7 @@ void GameManager::MainGame()
 			{
 				//Save(_pPlayerInfo);
 			}
-
+			pPlayer->Release();
 			DELETE_MAC(pPlayer);
 
 			return;
@@ -112,6 +119,50 @@ void GameManager::MainGame()
 			system("pause");
 			continue;
 		}
+	}
+	
+}
+
+void GameManager::Shop()
+{
+	CShop shop;
+	shop.Initialize(pPlayer);
+
+	while (true)
+	{
+		system("cls");
+
+		shop.ShowItems();
+
+		cout << "버튼을 누르세요 (1~10.아이템 고르기 20.상점 나가기): ";
+		int iBtn = 0;
+		cin >> iBtn;
+
+		if (iBtn == 20)
+		{
+			return;
+		}
+		else
+		{
+			shop.SelectMode(iBtn);
+		}
+
+		system("pause");
+	}
+}
+
+void GameManager::Inventory()
+{
+	cout << "소지 아이템" << "----------------------\n";
+	for (list<CItemBase*>::iterator iter = pPlayer->Get_Inventory().begin();
+		iter != pPlayer->Get_Inventory().end(); ++iter)
+	{
+		cout << (*iter)->GetEuipmentInfo().szName << endl;
+		/*if (dynamic_cast<CWeapon*>((*iter)))
+		{
+			cout << dynamic_cast<CWeapon*>((*iter))->Get_AttackPlus() << endl;
+
+		}*/
 	}
 	
 }

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -140,8 +140,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CArmor.h" />
+    <ClInclude Include="CItemBase.h" />
     <ClInclude Include="ClassDefine.h" />
     <ClInclude Include="CObjectBase.h" />
+    <ClInclude Include="CShop.h" />
+    <ClInclude Include="CWeapon.h" />
     <ClInclude Include="EnemyObject.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="StructureDefine.h" />
@@ -150,7 +154,11 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CArmor.cpp" />
+    <ClCompile Include="CItemBase.cpp" />
     <ClCompile Include="CObjectBase.cpp" />
+    <ClCompile Include="CShop.cpp" />
+    <ClCompile Include="CWeapon.cpp" />
     <ClCompile Include="EnemyObject.cpp" />
     <ClCompile Include="PlayerObject.cpp" />
     <ClCompile Include="TextRPG5main.cpp" />

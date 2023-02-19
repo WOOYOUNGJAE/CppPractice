@@ -20,5 +20,4 @@
 
 #define DELETE_MAC(p)	if(p) {delete p; p = nullptr;}
 #define DELETE_ARR_MAC(p)	if(p) {delete[] p; p = nullptr;}
-
 using namespace std;

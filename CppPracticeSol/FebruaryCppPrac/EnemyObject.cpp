@@ -1,15 +1,15 @@
 #include "stdafx.h"
 #include "EnemyObject.h"
 
-CEnemy::CEnemy(): pInfo(nullptr), pEnemyOnlyInfo(nullptr)
+CEnemy::CEnemy(): pEnemyOnlyInfo(nullptr)
 {
 	cout << "에너미 생성자" << endl;
 }
 
-CEnemy::CEnemy(const CEnemy& _rhs) : pInfo(nullptr), pEnemyOnlyInfo(nullptr)
+CEnemy::CEnemy(const CEnemy& _rhs) : pEnemyOnlyInfo(nullptr)
 {
 	pInfo = new ObjectInfo;
-	pEnemyOnlyInfo = new TEnemyOnlyInfo;
+	pEnemyOnlyInfo = new tEnemyOnlyInfo;
 
 	pInfo = _rhs.pInfo;
 	pEnemyOnlyInfo = _rhs.pEnemyOnlyInfo;
@@ -21,16 +21,16 @@ CEnemy::~CEnemy()
 	Release();
 }
 
-TEnemyOnlyInfo* CEnemy::Get_pEnemyOnly()
+tEnemyOnlyInfo* CEnemy::Get_pEnemyOnly()
 {
 	return pEnemyOnlyInfo;
 }
 
 void CEnemy::Initialize()
-{	
+{
 	CObjectBase::Initialize();
 
-	pEnemyOnlyInfo = new TEnemyOnlyInfo;
+	pEnemyOnlyInfo = new tEnemyOnlyInfo;
 }
 
 void CEnemy::Release()

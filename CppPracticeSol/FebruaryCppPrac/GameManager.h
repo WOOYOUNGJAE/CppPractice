@@ -28,6 +28,8 @@ private:
 
 public:
 	void MainGame();
+	void Shop();
+	void Inventory();
 	void Field();
 	void BattleField(int _iDifficulty);
 	int BattePhase();
