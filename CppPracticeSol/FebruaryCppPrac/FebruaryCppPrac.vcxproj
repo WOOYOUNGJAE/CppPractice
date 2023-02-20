@@ -143,6 +143,7 @@
     <ClInclude Include="CArmor.h" />
     <ClInclude Include="CItemBase.h" />
     <ClInclude Include="ClassDefine.h" />
+    <ClInclude Include="CMyString.h" />
     <ClInclude Include="CObjectBase.h" />
     <ClInclude Include="CShop.h" />
     <ClInclude Include="CWeapon.h" />
@@ -156,6 +157,7 @@
   <ItemGroup>
     <ClCompile Include="CArmor.cpp" />
     <ClCompile Include="CItemBase.cpp" />
+    <ClCompile Include="CMyString.cpp" />
     <ClCompile Include="CObjectBase.cpp" />
     <ClCompile Include="CShop.cpp" />
     <ClCompile Include="CWeapon.cpp" />

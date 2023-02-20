@@ -153,18 +153,35 @@ void GameManager::Shop()
 
 void GameManager::Inventory()
 {
-	cout << "소지 아이템" << "----------------------\n";
-	for (list<CItemBase*>::iterator iter = pPlayer->Get_Inventory().begin();
-		iter != pPlayer->Get_Inventory().end(); ++iter)
+	while (true)
 	{
-		cout << (*iter)->GetEuipmentInfo().szName << endl;
-		/*if (dynamic_cast<CWeapon*>((*iter)))
+		int i = 1;
+		cout << "소지 아이템" << "----------------------\n";
+		for (list<CItemBase*>::iterator iter = pPlayer->Get_Inventory().begin();
+			iter != pPlayer->Get_Inventory().end(); ++iter)
 		{
-			cout << dynamic_cast<CWeapon*>((*iter))->Get_AttackPlus() << endl;
+			cout << i++ << ": " << (*iter)->GetEuipmentInfo().szName << endl;
+			if (dynamic_cast<CWeapon*>((*iter)))
+			{
+				cout << "레벨 제한: " << dynamic_cast<CWeapon*>((*iter))->Get_MinLevel() << "\t";
+				cout << "공격력: +" << dynamic_cast<CWeapon*>((*iter))->Get_AttackPlus() << endl;
+			}
+		}
+		cout << "버튼을 누르세요 (1~10.아이템 고르기 20.인벤토리 나가기): ";
+		int iBtn = 0;
+		cin >> iBtn;
 
-		}*/
+		if (iBtn == 20)
+		{
+			return;
+		}
+		else
+		{
+
+		}
+
+		system("pause");
 	}
-	
 }
 
 void GameManager::Field()

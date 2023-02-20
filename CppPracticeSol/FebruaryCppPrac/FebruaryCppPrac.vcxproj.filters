@@ -51,6 +51,9 @@
     <ClInclude Include="CItemBase.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="CMyString.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameManager.cpp">
@@ -78,6 +81,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="CItemBase.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CMyString.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

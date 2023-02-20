@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ClassDefine.h"
 #include "GameManager.h"
+#include "CMyString.h"
 
 #ifndef DBG_NEW 
 
@@ -12,13 +13,19 @@ int ext_iEnemyNumbering = 0;
 int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+	CMyString str("fof7o2222f2222222222o", 10, 10);
+	CMyString str2("rororo", 10, 10);
+	/*CMyString str3 = str3 + "end";
+	str3 = str + str2;*/
+	str2 = str2 + "end";
+	str2 = str2 + str2;
+	cout << str2.Get_Text();
 
-	GameManager gameManager;
+	/*GameManager gameManager;
 
 	gameManager.PrintFirstScene();
 	gameManager.Initialize();
-	gameManager.MainGame();
+	gameManager.MainGame();*/
 
-	/*int TEnemyOnlyInfo::iNumbering = 1;*/
 	return 0;
 }
