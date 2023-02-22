@@ -42,7 +42,7 @@ void CPlayer::Release()
 	for (list<CItemBase*>::iterator iter = list_pInventory.begin();
 		iter != list_pInventory.end(); ++iter)
 	{
-		DELETE_MAC(*iter);		
+		DELETE_MAC(*iter);
 	}
 	list_pInventory.clear();
 }

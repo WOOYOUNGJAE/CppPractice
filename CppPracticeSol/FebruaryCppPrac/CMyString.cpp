@@ -6,7 +6,6 @@ CMyString::CMyString()
 {
 	cout << "생성자: String 생성" << endl;
 	Initialize("");
-
 }
 
 CMyString::CMyString(const char* _szText, int _iMax, int _iResizingSize)
@@ -21,10 +20,10 @@ CMyString::~CMyString()
 	DELETE_MAC(m_pText);
 }
 
-CMyString& CMyString::operator=(CMyString& rhs) // 깊은 복사
+CMyString& CMyString::operator=(const char* _szInput)
 {
 	// check size
-	int iNewLength = strlen(rhs.Get_Text()) + 1; // 들어오는 글자 + 널포인터
+	int iNewLength = strlen(_szInput) + 1; // 들어오는 글자 + 널포인터
 	// maxcount 재조정, 포인터 해제 후 재할당
 	while (true)
 	{
@@ -37,13 +36,43 @@ CMyString& CMyString::operator=(CMyString& rhs) // 깊은 복사
 			break;
 	}
 	// max는 Resize()에서 조정된 상태이지만 다시 조정
+	strcpy_s(m_pText, iNewLength, _szInput); // pText조정, strcpy는 자동 깊은 복사
+	m_iCurrentCount = iNewLength - 1;
+
+	return *this;
+}
+
+CMyString& CMyString::operator=(CMyString& rhs) // 깊은 복사
+{
+	if (&rhs == this)
+	{
+		return *this;
+	}
+	// 받고 난 후에 rhs 삭제해야하는데 rhs가 *this 이면 실행중에 인스턴스 파괴되는 문제
+	// check size
+	int iNewLength = strlen(rhs.Get_Text()) + 1; // 들어오는 글자 + 널포인터
+	// maxcount 재조정, 포인터 해제 후 재할당
+	//while (true)
+	//{
+	//	if (iNewLength > m_iCurrentMaxLength) // 초과하면
+	//	{
+	//		Resize(*this);
+	//		continue;
+	//	}
+	//	else
+	//		break;
+	//}
+	// max는 Resize()에서 조정된 상태이지만 다시 조정
+	Release(); // 기존 text release
+	m_pText = new char[iNewLength];
 	strcpy_s(m_pText, iNewLength, rhs.Get_Text()); // pText조정, strcpy는 자동 깊은 복사
 	m_iCurrentCount = rhs.Get_CurrentCount();
 	m_iCurrentMaxLength = rhs.Get_MaxLength();
 	m_iResizingSize = rhs.Get_ResizingSize();
-
-	return *this;
+	return *this; // 아직 rhs 해제 안된 상태
 }
+
+#pragma region Getter
 
 char* CMyString::Get_Text()
 {
@@ -60,15 +89,19 @@ int CMyString::Get_MaxLength()
 	return m_iCurrentMaxLength;
 }
 
+
 int CMyString::Get_ResizingSize()
 {
 	return m_iResizingSize;
 }
 
+#pragma endregion
+#pragma region Setter
 void CMyString::Set_TextPointer(char* _szInput)
 {
 	m_pText = _szInput;
 }
+#pragma endregion
 
 void CMyString::Initialize(const char* _szText)
 {
@@ -94,7 +127,7 @@ CMyString& CMyString::AddText(const char* _szInput)
 {
 	// AnotherString에 현재 클래스를 복사한 후, 조정 후, 반환
 	CMyString* AnotherString = new CMyString;
-	*AnotherString = *this; // 깊은 복사 (오버라이딩)
+	*AnotherString = *this; // 깊은 복사 (오버라이딩), 
 	// check size
 	int iNewLength = AnotherString->m_iCurrentCount + strlen(_szInput) + 1;
 	while (true)
@@ -171,4 +204,20 @@ CMyString& CMyString::operator+(CMyString& _strInput)
 	//	return *AnotherString;
 	//}
 	return AddText(_strInput.Get_Text());
+}
+
+void CMyString::operator+=(const char* _szInput)
+{	
+	*this = *this + (_szInput);
+}
+
+void CMyString::operator+=(CMyString& _strInput)
+{
+	*this = *this + _strInput;
+}
+
+ostream& operator<< (ostream& c, CMyString& _strInput)
+{
+	c << _strInput.Get_Text();
+	return c;
 }

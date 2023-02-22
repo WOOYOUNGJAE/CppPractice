@@ -5,8 +5,10 @@ public:
 	CMyString();
 	CMyString(const char* _szText, int _iMax, int _iResizingSize);
 	~CMyString();
-
+	
+	
 	// strcpy
+	CMyString& operator = (const char* _szInput); // 대입 깊은복사 연산자
 	CMyString& operator = (CMyString& rhs); // 대입 깊은복사 연산자
 
 private:
@@ -36,7 +38,12 @@ public:
 	// strcmp
 	int operator == (const char* _szInput);
 	// strcat
+	//+
 	CMyString& operator + (const char* _szInput);
 	CMyString& operator + (CMyString& _strInput);
-
+	// +=
+	void operator += (const char* _szInput);
+	void operator += (CMyString& _strInput);
+	// <<
+	friend ostream& operator<< (ostream& c, CMyString& _strInput);
 };
