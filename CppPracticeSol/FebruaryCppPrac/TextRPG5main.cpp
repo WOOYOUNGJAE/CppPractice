@@ -22,18 +22,35 @@ int main()
 	CMyList<int> list;
 
 
+	//list.assign(11, 3);
 	for (int i = 0; i < 10; ++i)
 	{
-		list.push_back(i);
+		//list.push_front(i);
+		list.push_back(i+1);
 	}
-	list;
+
+	CMyList<int>* copiedList = new CMyList<int>(list);
 	
+
+	//CMyList<int>::iterator iter; iter = list.begin(); // 한번에 합치는거
+	
+	//iter = (*iter).pNextNode->pNextNode->pNextNode;
+	//list.insert(iter, 222);
+	////++iter;
+	//list.erase(iter);
+
+	/*for (iter = list.begin(); iter != list.end(); ++iter)
+	{
+		cout << (*iter).data << endl;
+	}*/
 	
 	/*GameManager gameManager;
 
 	gameManager.PrintFirstScene();
 	gameManager.Initialize();
 	gameManager.MainGame();*/
-
+	list.Release();
+	CMyList<int> tmptmpList;
+	tmptmpList = *copiedList;
 	return 0;
 }
