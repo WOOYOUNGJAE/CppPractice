@@ -19,19 +19,7 @@ int main()
 {
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	
-	CMyList<int> list;
-
-
-	//list.assign(11, 3);
-	for (int i = 0; i < 10; ++i)
-	{
-		//list.push_front(i);
-		list.push_back(i+1);
-	}
-
-	CMyList<int>* copiedList = new CMyList<int>(list);
 	
-
 	//CMyList<int>::iterator iter; iter = list.begin(); // 한번에 합치는거
 	
 	//iter = (*iter).pNextNode->pNextNode->pNextNode;
@@ -49,8 +37,5 @@ int main()
 	gameManager.PrintFirstScene();
 	gameManager.Initialize();
 	gameManager.MainGame();*/
-	list.Release();
-	CMyList<int> tmptmpList;
-	tmptmpList = *copiedList;
 	return 0;
 }
