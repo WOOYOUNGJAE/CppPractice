@@ -63,6 +63,8 @@ void GameManager::Initialize()
 	// 게임 들어갔을 때 : 플레이어 생성
 	pPlayer = new CPlayer;
 	pPlayer->Initialize();
+	
+	pInventory = new CInventory;
 	m_vecEnemyPtrs.reserve(HARD); // 최대 레벨 만큼 리저브
 }
 
@@ -126,7 +128,7 @@ void GameManager::MainGame()
 void GameManager::Shop()
 {
 	CShop shop;
-	shop.Initialize(pPlayer);
+	shop.Initialize(pPlayer, pInventory);
 
 	while (true)
 	{
@@ -155,30 +157,39 @@ void GameManager::Inventory()
 {
 	while (true)
 	{
-		int i = 1;
-		cout << "소지 아이템" << "----------------------\n";
-		for (list<CItemBase*>::iterator iter = pPlayer->Get_Inventory().begin();
-			iter != pPlayer->Get_Inventory().end(); ++iter)
-		{
-			cout << i++ << ": " << (*iter)->GetEuipmentInfo().szName << endl;
-			if (dynamic_cast<CWeapon*>((*iter)))
-			{
-				cout << "레벨 제한: " << dynamic_cast<CWeapon*>((*iter))->Get_MinLevel() << "\t";
-				cout << "공격력: +" << dynamic_cast<CWeapon*>((*iter))->Get_AttackPlus() << endl;
-			}
-		}
-		cout << "버튼을 누르세요 (1~10.아이템 고르기 20.인벤토리 나가기): ";
-		int iBtn = 0;
-		cin >> iBtn;
+		//int i = 1;
+		//cout << "소지 아이템" << "----------------------\n";
+		///*for (list<CItemBase*>::iterator iter = pInventory->Get_Inventory().begin();
+		//	iter != pInventory->Get_Inventory().end(); ++iter)*/
+		//for (vector<CItemBase*>::iterator iter = pInventory->Get_Inventory().begin();
+		//	iter != pInventory->Get_Inventory().end(); ++iter)
+		//{
+		//	cout << i++ << ": " << (*iter)->GetEuipmentInfo().szName << endl;
+		//	if (dynamic_cast<CWeapon*>((*iter)))
+		//	{
+		//		cout << "레벨 제한: " << dynamic_cast<CWeapon*>((*iter))->Get_MinLevel() << "\t";
+		//		cout << "공격력: +" << dynamic_cast<CWeapon*>((*iter))->Get_AttackPlus() << endl;
+		//	}
+		//}
+		//cout << "버튼을 누르세요 (1~10.아이템 고르기 20.인벤토리 나가기): ";
+		//int iBtn = 0;
+		//cin >> iBtn;
 
-		if (iBtn == 20)
+		//if (iBtn == 20)
+		//{
+		//	return;
+		//}
+		//else
+		//{
+
+		//}
+
+		if (pInventory->RenderInventory() == false) // 아이템 보여주기
 		{
+			// 뒤로가기 버튼
 			return;
 		}
-		else
-		{
 
-		}
 
 		system("pause");
 	}

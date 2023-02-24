@@ -1,6 +1,7 @@
 #pragma once
 #include "StructureDefine.h"
-#include "PlayerObject.h"
+class PlayerObject;
+
 class CItemBase
 {
 public:
@@ -9,6 +10,7 @@ public:
 
 protected:
 	tEquipmentInfo m_tInfo;
+	PlayerObject* pPlayer;
 public:
 	//getter
 	virtual tEquipmentInfo GetEuipmentInfo();
@@ -17,7 +19,9 @@ public:
 	//setter
 	virtual void Set_MinLevel(int _iInput);
 
-	virtual void Initialize();
+	virtual void Equipt() = 0;
+
+	virtual void Initialize(PlayerObject* _pPlayer);
 	virtual void Release();
 
 public:

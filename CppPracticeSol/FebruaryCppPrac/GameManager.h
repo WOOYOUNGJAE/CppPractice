@@ -23,6 +23,8 @@ public:
 private:
 	CPlayer* pPlayer;
 	CEnemy* pEnemy;
+	CInventory* pInventory;
+	CItemBase* pItem;
 	vector<CEnemy*> m_vecEnemyPtrs;
 private:
 

@@ -14,9 +14,10 @@ CShop::~CShop()
 	}
 }
 
-void CShop::Initialize(CPlayer* _pPlayer)
+void CShop::Initialize(CPlayer* _pPlayer, CInventory* _pInventory)
 {
 	pPlayer = _pPlayer;
+	pInventory = _pInventory;
 
 	m_pItemArr[0] = new CWeapon("초급 무기", 10, 1, 1);
 	m_pItemArr[1] = new CWeapon("중급 무기", 20, 2, 5);
@@ -109,11 +110,11 @@ void CShop::BuyComplete(int _iInput)
 	{
 		CWeapon* pWeapon_ToBeAdded = new CWeapon;
 		memcpy_s(pWeapon_ToBeAdded, sizeof(CWeapon), m_pItemArr[_iInput - 1], sizeof(CWeapon));
-		pPlayer->Get_Inventory().push_back(pWeapon_ToBeAdded);
+		pInventory->Get_Inventory().push_back(pWeapon_ToBeAdded);
 	}
 	else // 수정 필요
 	{
 		CItemBase* pTmpItem = m_pItemArr[_iInput - 1];
-		pPlayer->Get_Inventory().push_back(pTmpItem);
+		pInventory->Get_Inventory().push_back(pTmpItem);
 	}
 }

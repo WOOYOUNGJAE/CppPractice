@@ -8,6 +8,7 @@ struct ObjectInfo
 	char szName[20];
 	int iHP;
 	int iAttack;
+	int iDefense;
 	int iLevel; // Ãß°¡
 };
 
@@ -28,13 +29,15 @@ struct tPlayerEquipment
 struct tPlayerOnlyInfo
 {
 	int iCurrnetMoney;
-	
+	int iMaxEXP;
+	int iCurrentEXP;
 };
 
 struct tEnemyOnlyInfo
 {
 	int iNumbering;
-	tEnemyOnlyInfo()
+	int iEXP_Return;
+	tEnemyOnlyInfo(): iEXP_Return(0)
 	{
 		iNumbering = ++ext_iEnemyNumbering;
 	}

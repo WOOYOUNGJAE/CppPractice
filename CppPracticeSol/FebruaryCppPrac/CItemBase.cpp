@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "CItemBase.h"
+#include "PlayerObject.h"
 
 CItemBase::CItemBase()
 {
@@ -25,9 +26,9 @@ void CItemBase::Set_MinLevel(int _iInput)
 	m_tInfo.iMinLevel = _iInput;
 }
 
-void CItemBase::Initialize()
+void CItemBase::Initialize(PlayerObject* _pPlayer)
 {
-	
+	pPlayer = _pPlayer;
 }
 
 void CItemBase::Release()

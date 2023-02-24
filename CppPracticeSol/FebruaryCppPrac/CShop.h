@@ -2,6 +2,7 @@
 #include "StructureDefine.h"
 #include "PlayerObject.h"
 #include "CWeapon.h"
+#include "CInventory.h"
 // armor.h
 
 #define ITEMS_MAX 6
@@ -14,10 +15,12 @@ public:
 
 private:
 	CPlayer* pPlayer;
+	CInventory* pInventory;
+
 	CItemBase* m_pItemArr[ITEMS_MAX]; // 클래스 포인터 담는 배열
 	tPlayerOnlyInfo tmp;
 public:
-	void Initialize(CPlayer* _pPlayer);
+	void Initialize(CPlayer* _pPlayer, CInventory* _pInventory);
 	void Release();
 
 	// Functions
