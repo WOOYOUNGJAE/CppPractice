@@ -29,8 +29,3 @@ void CWeapon::Set_AttackPlus(int _iInput)
 {
 	m_tInfo.iAtkPlus = _iInput;
 }
-
-void CWeapon::Equipt()
-{
-	//pPlayer->
-}

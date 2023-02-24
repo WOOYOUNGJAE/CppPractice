@@ -92,9 +92,6 @@
     <ClCompile Include="CMyString.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="CMyList.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="CInventory.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>

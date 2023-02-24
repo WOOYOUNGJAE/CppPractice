@@ -161,7 +161,6 @@
     <ClCompile Include="CArmor.cpp" />
     <ClCompile Include="CInventory.cpp" />
     <ClCompile Include="CItemBase.cpp" />
-    <ClCompile Include="CMyList.cpp" />
     <ClCompile Include="CMyString.cpp" />
     <ClCompile Include="CObjectBase.cpp" />
     <ClCompile Include="CShop.cpp" />
