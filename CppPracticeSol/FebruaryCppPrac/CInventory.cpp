@@ -40,7 +40,17 @@ bool CInventory::RenderInventory()
 
 CItemBase* CInventory::Search_and_Return(int _iItemID)
 {
-	//for(inti = )
+	for (vector<CItemBase*>::iterator iter = vec_pInventory.begin();
+		iter != vec_pInventory.end(); ++iter)
+	{
+		if ( (*iter)->GetEuipmentInfo().iItemID == _iItemID )
+		{
+			return (*iter);
+		}
+	}
+
+	// 해당 id의 아이템이 없을 경우
+	cout << "해당 id의 아이템이 없습니다." << endl;
 	return nullptr;
 }
 
