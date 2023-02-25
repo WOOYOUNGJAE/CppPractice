@@ -38,5 +38,5 @@ void CWeapon::ShowDetails()
 	cout << "레벨 제한: " << m_tInfo.iMinLevel << endl;
 	cout << "공격력 증가: +" << m_tInfo.iAtkPlus << endl;
 
-	cout << "-----------------------------\n";
+	//cout << "-----------------------------\n";
 }

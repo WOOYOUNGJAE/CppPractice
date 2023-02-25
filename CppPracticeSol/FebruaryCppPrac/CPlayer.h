@@ -27,6 +27,7 @@ public:
 	void Set_Attack(int _iValue); // 단순 세터
 	void Set_Attack(bool _bEquipt, int _iValue); // 장비 장착 시
 	void Set_Defense();
+	void Set_CurrentMoney(int _iAddedMoney);
 
 	bool TryEquipt(CItemBase* _pItem);
 	void Equipt(CItemBase* _pItem);

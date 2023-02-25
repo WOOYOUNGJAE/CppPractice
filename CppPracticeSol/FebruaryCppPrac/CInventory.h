@@ -21,7 +21,9 @@ public:
 	vector<CItemBase*>& Get_Inventory();
 	//setter
 
-	bool RenderInventory();
+	bool UpdateInventory();
+	void RenderInventory();
+	bool SelectItem();
 
 	CItemBase* Search_and_Return(int _iItemID);
 

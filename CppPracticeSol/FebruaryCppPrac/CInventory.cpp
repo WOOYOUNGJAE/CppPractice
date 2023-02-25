@@ -13,7 +13,14 @@ vector<CItemBase*>& CInventory::Get_Inventory()
 	return vec_pInventory;
 }
 
-bool CInventory::RenderInventory()
+bool CInventory::UpdateInventory()
+{
+	RenderInventory();
+
+	return SelectItem();
+}
+
+void CInventory::RenderInventory()
 {
 	int i = 1;
 	cout << "소지 아이템" << "----------------------\n";
@@ -22,21 +29,25 @@ bool CInventory::RenderInventory()
 	for (vector<CItemBase*>::iterator iter = vec_pInventory.begin();
 		iter != vec_pInventory.end(); ++iter)
 	{
-		cout << i++ << ": " << (*iter)->GetEuipmentInfo().szName << endl;
+		cout << i++ << "): " << (*iter)->GetEuipmentInfo().szName << endl;
 		if (dynamic_cast<CWeapon*>((*iter)))
 		{
 			cout << "레벨 제한: " << dynamic_cast<CWeapon*>((*iter))->Get_MinLevel() << "\t";
 			cout << "공격력: +" << dynamic_cast<CWeapon*>((*iter))->Get_AttackPlus() << endl;
 		}
 	}
-	cout << "버튼을 누르세요 (1~10.아이템 고르기 20.인벤토리 나가기): ";
+}
+
+bool CInventory::SelectItem()
+{
+	cout << "버튼을 누르세요 (1~10.아이템 고르기 0.인벤토리 나가기): ";
 	int iBtn = 0;
 	cin >> iBtn;
 
-	if (iBtn == 20)
+	if (iBtn == 0)
 	{
 		return false;
-	} 
+	}
 	else
 	{
 		if (iBtn <= 0) return false;

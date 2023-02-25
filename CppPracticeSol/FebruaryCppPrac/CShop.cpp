@@ -26,7 +26,7 @@ void CShop::Initialize(CPlayer* _pPlayer, CInventory* _pInventory)
 	// 방어구 3개
 }
 
-void CShop::ShowItems()
+void CShop::ShowItemList()
 {
 	cout << "현재 소지금: " << pPlayer->Get_PlayerOnlyInfo().iCurrnetMoney << endl << endl;
 	for (size_t i = 0; i < ITEMS_MAX; i++)
@@ -42,7 +42,84 @@ void CShop::ShowItems()
 	}
 }
 
-void CShop::SelectMode(int _iInput)
+void CShop::BuyMode()
+{
+	while (true)
+	{
+		system("cls");
+
+		ShowItemList();
+
+		cout << "버튼을 누르세요 (1~10.아이템 고르기 0.뒤로 가기): ";
+		int iBtn = 0;
+		cin >> iBtn;
+
+		if (iBtn == 0)
+		{
+			return;
+		}
+		else
+		{
+			Try_to_Buy(iBtn);
+		}
+
+		system("pause");
+	}
+}
+
+void CShop::SellMode()
+{
+	while (true)
+	{
+		system("cls");
+
+		pInventory->RenderInventory();
+
+		cout << "버튼을 누르세요 (1~10.아이템 고르기 0.뒤로 가기): ";
+		int iBtn = 0;
+		cin >> iBtn;
+
+		if (iBtn == 0)
+		{
+			return;
+		}
+		else
+		{
+			cout << endl << iBtn << "번 아이템을 선택하였습니다." << endl;
+			m_pItemArr[iBtn - 1]->ShowDetails();
+			cout << "판매 가격: " << ( m_pItemArr[iBtn - 1]->GetEuipmentInfo().iDefaultPrice >> 1 ) << endl; // 판매 가격 반값
+			cout << "-----------------------------\n";
+			cout << "버튼을 누르세요 (1.판매하기 2.이전으로): ";
+			int _iBtn = 0;
+			cin >> _iBtn;
+			switch (_iBtn)
+			{
+			case 1: // 판매
+			{
+				CItemBase*& ref_pItem = pInventory->Get_Inventory().at(iBtn - 1);
+				if (ref_pItem->Get_IfEquipting() == true)
+				{
+					cout << "장착 중인 아이템은 판매 할 수 없습니다." << endl;
+					return;
+				}
+
+				pPlayer->Set_CurrentMoney(ref_pItem->GetEuipmentInfo().iDefaultPrice >> 1);
+				DELETE_MAC(ref_pItem);
+				pInventory->Get_Inventory().erase(pInventory->Get_Inventory().begin() + iBtn - 1); // 삭제
+				break;
+			}
+			case 2: // 이전으로
+				return;
+			default:
+				return;
+			}
+		}
+
+		system("pause");
+	}
+}
+
+void CShop::Try_to_Buy(int _iInput)
 {
 	cout << endl << _iInput << "번 아이템을 선택하였습니다." << endl;
 	cout << "버튼을 누르세요 (1.구매하기 2.자세히 3.이전으로): ";

@@ -36,6 +36,11 @@ void CPlayer::Set_Attack(bool _bEquipt, int _iValue)
 	pInfo->iAttack += _iValue;
 }
 
+void CPlayer::Set_CurrentMoney(int _iAddedMoney)
+{
+	m_playerOnlyInfo.iCurrnetMoney += _iAddedMoney;
+}
+
 bool CPlayer::TryEquipt(CItemBase* _pItem)
 {
 	if ( pInfo->iLevel < _pItem->Get_MinLevel())

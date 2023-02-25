@@ -173,19 +173,26 @@ void GameManager::Shop()
 	{
 		system("cls");
 
-		shop.ShowItems();
 
-		cout << "버튼을 누르세요 (1~10.아이템 고르기 20.상점 나가기): ";
+		//choose buy or sell or return
+		cout << "버튼을 누르세요 (1.구매 모드 2.판매 모드 3.뒤로 가기):";
 		int iBtn = 0;
 		cin >> iBtn;
 
-		if (iBtn == 20)
+		switch (iBtn)
 		{
+		case 1:
+			// shop.buymode
+			shop.BuyMode();
+			break;
+		case 2:
+			// shop.sellmode
+			shop.SellMode();
+			break;
+		case 3:
+			return; // 뒤로 가기
+		default:
 			return;
-		}
-		else
-		{
-			shop.SelectMode(iBtn);
 		}
 
 		system("pause");
@@ -198,7 +205,7 @@ void GameManager::Inventory()
 	{
 		system("cls");
 
-		if (pInventory->RenderInventory() == false) // 아이템 보여주기
+		if (pInventory->UpdateInventory() == false) // 아이템 보여주기
 		{
 			// 뒤로가기 버튼
 			return;

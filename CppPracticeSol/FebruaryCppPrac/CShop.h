@@ -24,8 +24,10 @@ public:
 	void Release();
 
 	// Functions
-	void ShowItems();
-	void SelectMode(int _iInput);
+	void ShowItemList();
+	void BuyMode();
+	void SellMode();
+	void Try_to_Buy(int _iInput);
 	void ShowDetails(CItemBase* _pItem);
 	bool CalculateMoney(CItemBase* _pItem, tPlayerOnlyInfo* _playerOnly);
 	void BuyComplete(int _iInput);
