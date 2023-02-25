@@ -1,6 +1,6 @@
 #pragma once
 #include "StructureDefine.h"
-class PlayerObject;
+//class CPlayer;
 
 class CItemBase
 {
@@ -10,7 +10,7 @@ public:
 
 protected:
 	tEquipmentInfo m_tInfo;
-	PlayerObject* pPlayer;
+	//CPlayer* pPlayer;
 public:
 	//getter
 	virtual tEquipmentInfo GetEuipmentInfo();
@@ -21,12 +21,12 @@ public:
 
 	//virtual void Equipt() = 0;
 
-	virtual void Initialize(PlayerObject* _pPlayer);
+	virtual void Initialize();
 	virtual void Release();
 
 public:
 	// player로 이전, 장착은 플레이어가 직접
-	virtual bool TryApply(CPlayer* _pPlayer);
-	virtual void Apply(CPlayer* _pPlayer);
+	//virtual bool TryApply(CPlayer* _pPlayer);
+	//virtual void Apply(CPlayer* _pPlayer);
 
 };

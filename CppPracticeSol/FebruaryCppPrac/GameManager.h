@@ -13,7 +13,7 @@ const int LOSE = -1;
 
 class CPlayer;
 class CEnemy;
-
+class CInventory;
 class GameManager
 {
 public:

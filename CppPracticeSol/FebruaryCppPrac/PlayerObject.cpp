@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "PlayerObject.h"
-#include "CWeapon.h"
-
+#include "CPlayer.h"
+//#include "CWeapon.h"
+#include "CItemBase.h"
 #include "GameManager.h"
 
 
@@ -36,6 +36,11 @@ void CPlayer::Set_Attack(bool _bEquipt, int _iValue)
 	pInfo->iAttack += _iValue;
 }
 
+void CPlayer::Equipt(int _iItemID)
+{
+	pInventory->Get_Inventory().
+}
+
 //list<CItemBase*>& CPlayer::Get_Inventory()
 //vector<CItemBase*>& CPlayer::Get_Inventory()
 //{
@@ -45,12 +50,17 @@ void CPlayer::Set_Attack(bool _bEquipt, int _iValue)
 
 void CPlayer::Initialize() //override
 {
+	//pInfo
 	pInfo = new ObjectInfo{};
 	strcpy_s(pInfo->szName, GameManager::SelectJob());
 	pInfo->iHP = 100;
 	pInfo->iAttack = 10;
-
+	//player only info
 	m_playerOnlyInfo.iCurrnetMoney = 1000; // 첫 소지금
+
+	// equipments
+	pPlayerEquipting = new tPlayerEquipting{};
+
 }
 
 void CPlayer::Release()

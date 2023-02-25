@@ -6,7 +6,7 @@ class CWeapon : public CItemBase
 {
 public:
 	CWeapon();
-	CWeapon(const char _szName[20], int _iDefaultPrice, int _iMinLevel, int _iAtkPlus);
+	CWeapon(const char _szName[20], int _iItemID, int _iDefaultPrice, int _iMinLevel, int _iAtkPlus);
 	~CWeapon();
 
 public:

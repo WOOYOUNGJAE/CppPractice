@@ -24,9 +24,6 @@
     <ClInclude Include="GameManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerObject.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="StructureDefine.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -58,6 +55,9 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="CInventory.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayer.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,9 +6,10 @@ CWeapon::CWeapon()
 	
 }
 
-CWeapon::CWeapon(const char _szName[20], int _iDefaultPrice, int _iMinLevel, int _iAtkPlus)
+CWeapon::CWeapon(const char _szName[20], int _iItemID, int _iDefaultPrice, int _iMinLevel, int _iAtkPlus)
 {
 	strcpy_s(m_tInfo.szName, sizeof(m_tInfo.szName), _szName);
+	m_tInfo.iItemID = _iItemID;
 	m_tInfo.iDefaultPrice = _iDefaultPrice;
 	m_tInfo.iMinLevel = _iMinLevel;
 	m_tInfo.iAtkPlus = _iAtkPlus;

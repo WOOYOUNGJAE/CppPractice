@@ -20,6 +20,7 @@ public:
 	//setter
 
 	bool RenderInventory();
+	CItemBase* Search_and_Return(int _iItemID);
 
 	//other functions
 	void Initialize();

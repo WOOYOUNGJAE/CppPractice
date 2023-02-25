@@ -1,6 +1,6 @@
 #pragma once
 #include "StructureDefine.h"
-#include "PlayerObject.h"
+#include "CPlayer.h"
 #include "CWeapon.h"
 #include "CInventory.h"
 // armor.h

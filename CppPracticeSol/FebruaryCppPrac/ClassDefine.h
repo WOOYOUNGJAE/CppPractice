@@ -1,7 +1,7 @@
 #pragma once
 
 //#include "GameManager.h"
-#include "PlayerObject.h"
+#include "CPlayer.h"
 #include "EnemyObject.h"
 #include "CShop.h"
 #include "CInventory.h"

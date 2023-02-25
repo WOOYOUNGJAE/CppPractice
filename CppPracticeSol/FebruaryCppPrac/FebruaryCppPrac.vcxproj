@@ -153,7 +153,7 @@
     <ClInclude Include="EnemyObject.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="StructureDefine.h" />
-    <ClInclude Include="PlayerObject.h" />
+    <ClInclude Include="CPlayer.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>

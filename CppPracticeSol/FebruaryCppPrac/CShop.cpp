@@ -19,9 +19,9 @@ void CShop::Initialize(CPlayer* _pPlayer, CInventory* _pInventory)
 	pPlayer = _pPlayer;
 	pInventory = _pInventory;
 
-	m_pItemArr[0] = new CWeapon("초급 무기", 10, 1, 1);
-	m_pItemArr[1] = new CWeapon("중급 무기", 20, 2, 5);
-	m_pItemArr[2] = new CWeapon("고급 무기", 30, 3, 10);
+	m_pItemArr[0] = new CWeapon("초급 무기", 1001 ,10, 1, 1);
+	m_pItemArr[1] = new CWeapon("중급 무기", 1002, 20, 2, 5);
+	m_pItemArr[2] = new CWeapon("고급 무기", 1003, 30, 3, 10);
 
 	// 방어구 3개
 }

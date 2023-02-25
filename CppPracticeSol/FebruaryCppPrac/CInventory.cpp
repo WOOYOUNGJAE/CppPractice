@@ -38,6 +38,12 @@ bool CInventory::RenderInventory()
 	}
 }
 
+CItemBase* CInventory::Search_and_Return(int _iItemID)
+{
+	//for(inti = )
+	return nullptr;
+}
+
 void CInventory::Release()
 {
 	//for (list<CItemBase*>::iterator iter = list_pInventory.begin();
