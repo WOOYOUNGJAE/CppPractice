@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "StructureDefine.h"
 #include "GameManager.h"
 #include "ClassDefine.h"
 
@@ -31,11 +32,18 @@ void GameManager::PrintFirstScene()
 	}
 }
 
-void GameManager::PrintInfo(ObjectInfo _tInfo)
+void GameManager::PrintInfo(CObjectBase* _pObject)
 {
 	cout << "=====================================" << endl;
-	cout << "이름: " << _tInfo.szName << endl;
-	cout << "체력: " << _tInfo.iHP << "\t공격력: " << _tInfo.iAttack << endl;
+	cout << "이름: " << _pObject->Get_pInfo()->szName << endl;
+	cout << "레벨: " << _pObject->Get_pInfo()->iLevel << endl;
+	cout << "체력: " << _pObject->Get_pInfo()->iHP << "\t공격력: " << _pObject->Get_pInfo()->iAttack << "\t방어력: " << _pObject->Get_pInfo()->iDefense << endl;
+	if (dynamic_cast<CPlayer*>(_pObject))
+	{
+		cout << endl << "경험치 : " << static_cast<CPlayer*>(_pObject)->Get_PlayerOnlyInfo().iCurrentEXP
+			<< " / " << static_cast<CPlayer*>(_pObject)->Get_PlayerOnlyInfo().iMaxEXP;
+		cout << "현재 소지금: " << static_cast<CPlayer*>(_pObject)->Get_PlayerOnlyInfo().iCurrnetMoney << endl;
+	}
 }
 
 const char* GameManager::SelectJob()
@@ -65,6 +73,7 @@ void GameManager::Initialize()
 	pPlayer->Initialize();
 	
 	pInventory = new CInventory;
+	pInventory->Initialize(pPlayer);
 	m_vecEnemyPtrs.reserve(HARD); // 최대 레벨 만큼 리저브
 }
 
@@ -84,7 +93,7 @@ void GameManager::MainGame()
 
 		// 플레이어 정보 출력
 
-		cout << "버튼을 누르세요 (1.사냥터 2.상점 3.인벤토리 4.종료): ";
+		cout << "버튼을 누르세요 (1.사냥터 2.상점 3.캐릭터 정보 4.종료): ";
 		int iBtn = 0;
 		cin >> iBtn;
 		int iIfSaveBtn = 0;
@@ -98,7 +107,37 @@ void GameManager::MainGame()
 			Shop();
 			break;
 		case 3:
-			Inventory();
+			PrintInfo(pPlayer);
+			{
+				cout << "버튼을 누르세요 (1.인벤토리 확인 2.장비창 확인 3.뒤로가기)";
+				int iBtn = 0;
+				cin >> iBtn;
+				switch (iBtn)
+				{
+				case 1:
+					Inventory();
+					break;
+				case 2:
+				{
+					// 장비 보여주기
+					while (true)
+					{						
+						if (pPlayer->RenderEquiptments() == false) // 아이템 보여주기
+						{
+							// 뒤로가기 버튼
+							break;
+						}
+
+
+						system("pause");
+					}
+				}
+					break;
+				default:
+					break;
+				}
+
+			}
 			system("pause");
 			break;
 		case 4: // 종료
@@ -157,32 +196,7 @@ void GameManager::Inventory()
 {
 	while (true)
 	{
-		//int i = 1;
-		//cout << "소지 아이템" << "----------------------\n";
-		///*for (list<CItemBase*>::iterator iter = pInventory->Get_Inventory().begin();
-		//	iter != pInventory->Get_Inventory().end(); ++iter)*/
-		//for (vector<CItemBase*>::iterator iter = pInventory->Get_Inventory().begin();
-		//	iter != pInventory->Get_Inventory().end(); ++iter)
-		//{
-		//	cout << i++ << ": " << (*iter)->GetEuipmentInfo().szName << endl;
-		//	if (dynamic_cast<CWeapon*>((*iter)))
-		//	{
-		//		cout << "레벨 제한: " << dynamic_cast<CWeapon*>((*iter))->Get_MinLevel() << "\t";
-		//		cout << "공격력: +" << dynamic_cast<CWeapon*>((*iter))->Get_AttackPlus() << endl;
-		//	}
-		//}
-		//cout << "버튼을 누르세요 (1~10.아이템 고르기 20.인벤토리 나가기): ";
-		//int iBtn = 0;
-		//cin >> iBtn;
-
-		//if (iBtn == 20)
-		//{
-		//	return;
-		//}
-		//else
-		//{
-
-		//}
+		system("cls");
 
 		if (pInventory->RenderInventory() == false) // 아이템 보여주기
 		{
@@ -202,7 +216,7 @@ void GameManager::Field()
 		system("cls");
 
 		//PrintInfo(*(_pPlayer->Get_pInfo()));
-		PrintInfo(*(pPlayer->Get_pInfo()));
+		PrintInfo(pPlayer);
 		cout << "1. 초급 2. 중급 3. 고급 4. 전 단계 :";
 		int iBtn = 0;
 		cin >> iBtn;
@@ -243,12 +257,12 @@ void GameManager::BattleField(int _iDifficulty)
 	{
 		system("cls");
 
-		PrintInfo(*(pPlayer->Get_pInfo()));
+		PrintInfo(pPlayer);
 		for (int i = 0; i < m_vecEnemyPtrs.size(); ++i) // 난이도 만큼 적 생성
 		{
 			if (m_vecEnemyPtrs[i] != nullptr)
 			//if (m_vecEnemyPtrs[i]->Get_pInfo()->iHP >= 0)
-				PrintInfo(*(m_vecEnemyPtrs[i]->Get_pInfo())); // enemy
+				PrintInfo(m_vecEnemyPtrs[i]); // enemy
 		}
 
 		cout << "1. 공격 2. 도망";

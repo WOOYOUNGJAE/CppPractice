@@ -2,6 +2,7 @@
 #include "StructureDefine.h"
 
 class CItemBase;
+class CPlayer;
 
 class CInventory
 {
@@ -11,6 +12,7 @@ public:
 
 private:
 	CItemBase* pItem;
+	CPlayer* pPlayer;
 	//list<CItemBase*> list_pInventory;
 	vector<CItemBase*> vec_pInventory;
 public:
@@ -20,9 +22,10 @@ public:
 	//setter
 
 	bool RenderInventory();
+
 	CItemBase* Search_and_Return(int _iItemID);
 
 	//other functions
-	void Initialize();
+	void Initialize(CPlayer* _pPLayer);
 	void Release();
 };

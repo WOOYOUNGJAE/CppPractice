@@ -62,7 +62,8 @@ void CShop::SelectMode(int _iInput)
 		}
 		break;
 	case 2:
-		ShowDetails(m_pItemArr[_iInput - 1]);
+		cout << "가격: " << m_pItemArr[_iInput - 1]->GetEuipmentInfo().iDefaultPrice << endl;
+		m_pItemArr[_iInput - 1]->ShowDetails();
 		break;
 	case 3:
 		return;
@@ -74,21 +75,22 @@ void CShop::SelectMode(int _iInput)
 
 void CShop::ShowDetails(CItemBase* _pItem)
 {
-	cout << "아이템 이름: " << _pItem->GetEuipmentInfo().szName << endl;
-	cout << "가격: " << _pItem->GetEuipmentInfo().iDefaultPrice << endl;
-	cout << "레벨 제한: " << _pItem->GetEuipmentInfo().iMinLevel << endl;
-
-	if (dynamic_cast<CWeapon*>(_pItem))
-	{
-		cout << "공격력 증가: +" << _pItem->GetEuipmentInfo().iAtkPlus << endl;
-
-	}
-	//else if (typeid(m_pItemArr[i]) == typeid(CArmor))
-	else
-	{
-		cout << "오류: 무기도 방어구도 아님" << endl;
-	}
-	cout << "-----------------------------\n";
+//	_pItem->ShowDetails();
+//
+//	cout << "아이템 이름: " << _pItem->GetEuipmentInfo().szName << endl;
+//	cout << "레벨 제한: " << _pItem->GetEuipmentInfo().iMinLevel << endl;
+//
+//	if (dynamic_cast<CWeapon*>(_pItem))
+//	{
+//		cout << "공격력 증가: +" << _pItem->GetEuipmentInfo().iAtkPlus << endl;
+//
+//	}
+//	//else if (typeid(m_pItemArr[i]) == typeid(CArmor))
+//	else
+//	{
+//		cout << "오류: 무기도 방어구도 아님" << endl;
+//	}
+//	cout << "-----------------------------\n";
 }
 
 bool CShop::CalculateMoney(CItemBase* _pItem, tPlayerOnlyInfo* _playerOnly)

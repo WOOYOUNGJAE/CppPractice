@@ -15,6 +15,7 @@ struct ObjectInfo
 struct tEquipmentInfo
 {
 	char szName[20];
+	bool bIsEquipting;
 	unsigned int iItemID; // 아이템 고유 번호(무기1000~ 방어구2000~)
 	unsigned int iDefaultPrice; // 정가
 	unsigned int iMinLevel; // 레벨 장착 제한

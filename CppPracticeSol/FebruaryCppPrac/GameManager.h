@@ -1,7 +1,7 @@
 #pragma once
 
 //#include "stdafx.h"
-#include "StructureDefine.h"
+
 
 const int EASY = 1;
 const int NORMAL = 2;
@@ -11,6 +11,7 @@ const int WIN = 1;
 const int DRAW = 0;
 const int LOSE = -1;
 
+class CObjectBase;
 class CPlayer;
 class CEnemy;
 class CInventory;
@@ -36,12 +37,12 @@ public:
 	void BattleField(int _iDifficulty);
 	int BattePhase();
 
-	void Initialize();
 	CEnemy* InstantiateEnemy(int _iDifficulty);
 	void ClearEnemyVector();
 
 	void PrintFirstScene();
-	void PrintInfo(ObjectInfo _tInfo);
+	void PrintInfo(CObjectBase* _pObject);
 
+	void Initialize();
 	static const char* SelectJob();
 };

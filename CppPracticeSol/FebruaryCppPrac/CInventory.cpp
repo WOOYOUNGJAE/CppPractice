@@ -1,6 +1,11 @@
 #include "stdafx.h"
 #include "CInventory.h"
 #include "CWeapon.h"
+#include "CPlayer.h"
+
+CInventory::CInventory()
+{
+}
 
 vector<CItemBase*>& CInventory::Get_Inventory()
 {
@@ -31,10 +36,28 @@ bool CInventory::RenderInventory()
 	if (iBtn == 20)
 	{
 		return false;
-	}
+	} 
 	else
 	{
+		if (iBtn <= 0) return false;
 
+		CItemBase* pItem = vec_pInventory[iBtn - 1];
+		pItem->ShowDetails();
+		cout << "버튼을 누르세요 (1.장착 2.뒤로 가기): " << endl;
+		int iBtn = 0;
+		cin >> iBtn;
+		switch (iBtn)
+		{
+		case 1:
+			pPlayer->Equipt(pItem);
+			break;
+		case 2:
+			return true;
+		default:
+			break;
+		}
+
+		return true;
 	}
 }
 
@@ -52,6 +75,11 @@ CItemBase* CInventory::Search_and_Return(int _iItemID)
 	// 해당 id의 아이템이 없을 경우
 	cout << "해당 id의 아이템이 없습니다." << endl;
 	return nullptr;
+}
+
+void CInventory::Initialize(CPlayer* _pPLayer)
+{
+	pPlayer = _pPLayer;
 }
 
 void CInventory::Release()

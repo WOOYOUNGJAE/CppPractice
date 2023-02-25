@@ -32,10 +32,10 @@ int main()
 		cout << (*iter).data << endl;
 	}*/
 	
-	/*GameManager gameManager;
+	GameManager gameManager;
 
 	gameManager.PrintFirstScene();
 	gameManager.Initialize();
-	gameManager.MainGame();*/
+	gameManager.MainGame();
 	return 0;
 }

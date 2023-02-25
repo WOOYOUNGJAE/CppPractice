@@ -16,6 +16,16 @@ tEquipmentInfo CItemBase::GetEuipmentInfo()
 	return m_tInfo;
 }
 
+int CItemBase::Get_ItemID()
+{
+	return m_tInfo.iItemID;
+}
+
+int CItemBase::Get_IfEquipting()
+{
+	return m_tInfo.bIsEquipting;
+}
+
 int CItemBase::Get_MinLevel()
 {
 	return m_tInfo.iMinLevel;
@@ -24,6 +34,11 @@ int CItemBase::Get_MinLevel()
 void CItemBase::Set_MinLevel(int _iInput)
 {
 	m_tInfo.iMinLevel = _iInput;
+}
+
+void CItemBase::Set_IsEquipting(bool _bInput)
+{
+	m_tInfo.bIsEquipting = _bInput;
 }
 
 void CItemBase::Initialize()

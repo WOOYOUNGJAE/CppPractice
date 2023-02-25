@@ -16,5 +16,6 @@ public:
 	//setter
 	void Set_AttackPlus(int _iInput);
 
+	virtual void ShowDetails() override;
 	//virtual void Equipt() override;
 };

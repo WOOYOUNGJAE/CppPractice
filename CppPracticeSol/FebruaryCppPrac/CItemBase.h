@@ -14,11 +14,15 @@ protected:
 public:
 	//getter
 	virtual tEquipmentInfo GetEuipmentInfo();
+	virtual int Get_ItemID();
+	virtual int Get_IfEquipting();
 	virtual int Get_MinLevel();
 
 	//setter
 	virtual void Set_MinLevel(int _iInput);
+	virtual void Set_IsEquipting(bool _bInput);
 
+	virtual void ShowDetails() = 0;
 	//virtual void Equipt() = 0;
 
 	virtual void Initialize();
