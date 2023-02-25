@@ -183,13 +183,14 @@ void CPlayer::Initialize() //override
 	//player only info
 	m_playerOnlyInfo.iCurrnetMoney = 1000; // 첫 소지금
 	// equipments
-	pPlayerEquipting = new tPlayerEquipting{};
+	pPlayerEquipting = new tPlayerEquipting{}; // Release에서 해제
 
 }
 
 void CPlayer::Release()
 {
 	CObjectBase::Release();
+	DELETE_MAC(pPlayerEquipting)
 	//for (list<CItemBase*>::iterator iter = list_pInventory.begin();
 		//iter != list_pInventory.end(); ++iter)
 	//for (vector<CItemBase*>::iterator iter = vec_pInventory.begin();

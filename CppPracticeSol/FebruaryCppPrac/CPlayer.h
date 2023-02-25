@@ -14,7 +14,8 @@ public:
 private:
 	tPlayerOnlyInfo m_playerOnlyInfo;
 	tPlayerEquipting* pPlayerEquipting;
-	CInventory* pInventory;
+	//CInventory* pInventory;
+
 	//CItemBase* pItem;
 	//list<CItemBase*> list_pInventory;
 	//vector<CItemBase*> vec_pInventory;

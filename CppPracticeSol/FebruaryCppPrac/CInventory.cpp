@@ -3,8 +3,13 @@
 #include "CWeapon.h"
 #include "CPlayer.h"
 
-CInventory::CInventory()
+CInventory::CInventory() :pPlayer(nullptr)
 {
+}
+
+CInventory::~CInventory()
+{
+	Release();
 }
 
 vector<CItemBase*>& CInventory::Get_Inventory()

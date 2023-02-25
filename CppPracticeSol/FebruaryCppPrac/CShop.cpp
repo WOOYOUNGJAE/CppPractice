@@ -26,6 +26,10 @@ void CShop::Initialize(CPlayer* _pPlayer, CInventory* _pInventory)
 	// 방어구 3개
 }
 
+void CShop::Release()
+{
+}
+
 void CShop::ShowItemList()
 {
 	cout << "현재 소지금: " << pPlayer->Get_PlayerOnlyInfo().iCurrnetMoney << endl << endl;

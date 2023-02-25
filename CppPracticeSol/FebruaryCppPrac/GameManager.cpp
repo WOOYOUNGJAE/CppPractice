@@ -77,6 +77,12 @@ void GameManager::Initialize()
 	m_vecEnemyPtrs.reserve(HARD); // 최대 레벨 만큼 리저브
 }
 
+void GameManager::Release()
+{
+	DELETE_MAC(pInventory)
+	DELETE_MAC(pPlayer);
+}
+
 void GameManager::MainGame()
 {
 	//CPlayer cPlayer; // 객체 생성될 때 바로 SelectJob
@@ -149,8 +155,8 @@ void GameManager::MainGame()
 			{
 				//Save(_pPlayerInfo);
 			}
-			pPlayer->Release();
-			DELETE_MAC(pPlayer);
+			Release();
+			
 
 			return;
 

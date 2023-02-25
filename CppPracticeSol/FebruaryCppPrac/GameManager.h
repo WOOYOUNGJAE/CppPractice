@@ -44,5 +44,6 @@ public:
 	void PrintInfo(CObjectBase* _pObject);
 
 	void Initialize();
+	void Release();
 	static const char* SelectJob();
 };

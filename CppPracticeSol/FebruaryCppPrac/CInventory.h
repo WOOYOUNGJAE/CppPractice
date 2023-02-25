@@ -1,7 +1,6 @@
 #pragma once
 #include "StructureDefine.h"
 
-class CItemBase;
 class CPlayer;
 
 class CInventory
@@ -11,7 +10,6 @@ public:
 	~CInventory();
 
 private:
-	CItemBase* pItem;
 	CPlayer* pPlayer;
 	//list<CItemBase*> list_pInventory;
 	vector<CItemBase*> vec_pInventory;
