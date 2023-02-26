@@ -26,11 +26,31 @@ tEnemyOnlyInfo* CEnemy::Get_pEnemyOnly()
 	return pEnemyOnlyInfo;
 }
 
+void CEnemy::Set_Money_Drop(int _iMoney)
+{
+	pEnemyOnlyInfo->iMoney_Drop = _iMoney;
+}
+
+void CEnemy::Set_EXP_Drop(int _iEXP)
+{
+	pEnemyOnlyInfo->iEXP_Drop = _iEXP;
+}
+
+int CEnemy::DropEXP()
+{
+	return pEnemyOnlyInfo->iEXP_Drop;
+}
+
+int CEnemy::DropMoney()
+{
+	return pEnemyOnlyInfo->iMoney_Drop;
+}
+
 void CEnemy::Initialize()
 {
 	CObjectBase::Initialize();
 
-	pEnemyOnlyInfo = new tEnemyOnlyInfo;
+	pEnemyOnlyInfo = new tEnemyOnlyInfo {};
 }
 
 void CEnemy::Release()

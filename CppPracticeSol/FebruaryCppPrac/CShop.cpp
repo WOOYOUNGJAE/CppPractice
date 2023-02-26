@@ -90,7 +90,7 @@ void CShop::SellMode()
 		else
 		{
 			cout << endl << iBtn << "번 아이템을 선택하였습니다." << endl;
-			m_pItemArr[iBtn - 1]->ShowDetails();
+			pInventory->Get_Inventory().at(iBtn - 1)->ShowDetails();
 			cout << "판매 가격: " << ( m_pItemArr[iBtn - 1]->GetEuipmentInfo().iDefaultPrice >> 1 ) << endl; // 판매 가격 반값
 			cout << "-----------------------------\n";
 			cout << "버튼을 누르세요 (1.판매하기 2.이전으로): ";

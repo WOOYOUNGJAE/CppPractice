@@ -42,8 +42,9 @@ struct tPlayerOnlyInfo
 struct tEnemyOnlyInfo
 {
 	int iNumbering;
-	int iEXP_Return;
-	tEnemyOnlyInfo(): iEXP_Return(0)
+	int iEXP_Drop;
+	int iMoney_Drop;
+	tEnemyOnlyInfo(): iEXP_Drop(0), iMoney_Drop(0)
 	{
 		iNumbering = ++ext_iEnemyNumbering;
 	}

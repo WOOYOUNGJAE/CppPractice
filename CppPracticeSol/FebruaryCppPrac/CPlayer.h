@@ -29,12 +29,16 @@ public:
 	void Set_Attack(bool _bEquipt, int _iValue); // 장비 장착 시
 	void Set_Defense();
 	void Set_CurrentMoney(int _iAddedMoney);
+	void Set_EXP(int _iAdded);
 
+	void LevelUp();
+
+	// 장비 관련
 	bool TryEquipt(CItemBase* _pItem);
 	void Equipt(CItemBase* _pItem);
 	void UnEquipt(CItemBase* _pItem);
-
 	bool RenderEquiptments();
+
 
 	//other functions
 	virtual void Initialize() override;

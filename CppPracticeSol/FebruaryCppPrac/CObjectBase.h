@@ -19,6 +19,7 @@ public:
 	void Set_pInfo_Name(const char _szName[]);
 	void Set_pInfo_HP(int _iHP);
 	void Set_pInfo_Attack(int _iAttack);
+	void Set_pInfo_Level(int _iLevel);
 
 	//other functions
 	virtual void Initialize();

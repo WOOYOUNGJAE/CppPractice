@@ -38,7 +38,34 @@ void CPlayer::Set_Attack(bool _bEquipt, int _iValue)
 
 void CPlayer::Set_CurrentMoney(int _iAddedMoney)
 {
+	cout << "돈을 +" << _iAddedMoney << "획득하였습니다." << endl;
 	m_playerOnlyInfo.iCurrnetMoney += _iAddedMoney;
+}
+
+void CPlayer::Set_EXP(int _iAdded)
+{
+	int& ref_currentEXP = m_playerOnlyInfo.iCurrentEXP;
+	ref_currentEXP += _iAdded;
+
+	cout << "경험치를 +" << _iAdded << "획득하였습니다." << endl;
+
+	if (ref_currentEXP >= pInfo->iLevel * 100)
+	{
+		ref_currentEXP -= pInfo->iLevel * 100;
+		LevelUp();
+	}
+}
+
+void CPlayer::LevelUp()
+{
+	++(pInfo->iLevel);
+	++(pInfo->iAttack);
+	++(pInfo->iDefense);
+	pInfo->iHP = pInfo->iLevel * 100;
+	m_playerOnlyInfo.iMaxEXP = pInfo->iLevel * 100;
+
+	cout << "레벨 업 하였습니다." << endl;
+	cout << "공격력 방어력이 1 증가하였습니다." << endl << endl;
 }
 
 bool CPlayer::TryEquipt(CItemBase* _pItem)
@@ -182,6 +209,7 @@ void CPlayer::Initialize() //override
 	pInfo->iLevel = 1;
 	//player only info
 	m_playerOnlyInfo.iCurrnetMoney = 1000; // 첫 소지금
+	m_playerOnlyInfo.iMaxEXP = 100;
 	// equipments
 	pPlayerEquipting = new tPlayerEquipting{}; // Release에서 해제
 

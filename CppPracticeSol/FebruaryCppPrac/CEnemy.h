@@ -15,6 +15,11 @@ public:
 	//getter
 	tEnemyOnlyInfo* Get_pEnemyOnly();
 	//setter
+	void Set_Money_Drop(int _iMoney);
+	void Set_EXP_Drop(int _iEXP);
+
+	int DropEXP();
+	int DropMoney();
 
 	//other functions
 	virtual void Initialize() override;

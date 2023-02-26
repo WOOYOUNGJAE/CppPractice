@@ -41,7 +41,7 @@ void GameManager::PrintInfo(CObjectBase* _pObject)
 	if (dynamic_cast<CPlayer*>(_pObject))
 	{
 		cout << endl << "경험치 : " << static_cast<CPlayer*>(_pObject)->Get_PlayerOnlyInfo().iCurrentEXP
-			<< " / " << static_cast<CPlayer*>(_pObject)->Get_PlayerOnlyInfo().iMaxEXP;
+			<< " / " << static_cast<CPlayer*>(_pObject)->Get_PlayerOnlyInfo().iMaxEXP << "\t";
 		cout << "현재 소지금: " << static_cast<CPlayer*>(_pObject)->Get_PlayerOnlyInfo().iCurrnetMoney << endl;
 	}
 }
@@ -278,7 +278,7 @@ void GameManager::BattleField(int _iDifficulty)
 				PrintInfo(m_vecEnemyPtrs[i]); // enemy
 		}
 
-		cout << "1. 공격 2. 도망";
+		cout << "1. 공격 2. HP 회복 3. 도망";
 		int iBtn = 0;
 		cin >> iBtn;
 
@@ -288,11 +288,14 @@ void GameManager::BattleField(int _iDifficulty)
 		switch (iBtn)
 		{
 		case 1: //전투
-		{
-			_iBattleResult = BattePhase();
-		}
-		break;
-		case 2: // 도망
+	
+			_iBattleResult = BattePhase();		
+			break;
+		case 2: // 회복
+			pPlayer->Set_pInfo_HP(pPlayer->Get_pInfo()->iHP + 500);
+			cout << "HP를 회복 하였습니다." << endl;
+			break;
+		case 3: // 도망
 			// 벡터 정리
 			ClearEnemyVector();
 			return;
@@ -303,16 +306,17 @@ void GameManager::BattleField(int _iDifficulty)
 		switch (_iBattleResult)
 		{
 		case WIN:
+			ClearEnemyVector();
 			return;
 		case DRAW:
 			continue;
 		case LOSE:
+			ClearEnemyVector();
 			return; // 전 단계로	
 		default:
-			cout << "error in BattleField()" << endl;
-			system("pause");
 			break;
 		}
+		system("pause");
 
 	}
 	// 전투가 끝난 후
@@ -346,6 +350,11 @@ int GameManager::BattePhase()
 	else if (refEnemyHp <= 0)
 	{
 		cout << "적 처치" << endl;
+
+		pPlayer->Set_EXP(pEnemy->DropEXP());
+		pPlayer->Set_CurrentMoney(pEnemy->DropMoney());
+
+
 		DELETE_MAC(pEnemy);
 		m_vecEnemyPtrs.front() = nullptr;
 		m_vecEnemyPtrs.erase(m_vecEnemyPtrs.begin());
@@ -369,6 +378,12 @@ CEnemy* GameManager::InstantiateEnemy(int _iDifficulty)
 	pTmpEnemy->Initialize();
 	pTmpEnemy->Set_pInfo_HP(30 * _iDifficulty);
 	pTmpEnemy->Set_pInfo_Attack(3 * _iDifficulty);
+	pTmpEnemy->Set_pInfo_Level(_iDifficulty);
+	pTmpEnemy->Set_pInfo_Attack(3 * _iDifficulty);
+
+	pTmpEnemy->Set_Money_Drop(10 * _iDifficulty);
+	pTmpEnemy->Set_EXP_Drop(10 * _iDifficulty);
+
 	char szTmpNumber[20] = "";
 	sprintf_s(szTmpNumber, "%d", ext_iEnemyNumbering); // int to char Arr
 	switch (_iDifficulty)
@@ -394,10 +409,10 @@ CEnemy* GameManager::InstantiateEnemy(int _iDifficulty)
 
 void GameManager::ClearEnemyVector()
 {
-	m_vecEnemyPtrs.clear();
 	for (vector<CEnemy*>::iterator iter = m_vecEnemyPtrs.begin();
 		iter != m_vecEnemyPtrs.end(); ++iter)
 	{
 		DELETE_MAC(*iter);
 	}
+	m_vecEnemyPtrs.clear();
 }
