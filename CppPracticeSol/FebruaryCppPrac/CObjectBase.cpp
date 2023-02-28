@@ -39,10 +39,10 @@ void CObjectBase::Set_pInfo_Level(int _iLevel)
 void CObjectBase::Initialize()
 {
 	pInfo = new ObjectInfo {};
-	memset(pInfo->szName, 0, sizeof(pInfo->szName));
-	pInfo->iHP = 0;
+	//memset(pInfo->szName, 0, sizeof(pInfo->szName));
+	/*pInfo->iHP = 0;
 	pInfo->iAttack = 0;
-	pInfo->iDefense = 0;
+	pInfo->iDefense = 0;*/
 }
 
 void CObjectBase::Initialize(char _szName[], int _iHP, int _iAttack)
